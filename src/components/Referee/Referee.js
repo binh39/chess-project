@@ -214,10 +214,6 @@ export default function Referee() {
 
   return (
     <>
-      <p style={{ color: "white", fontSize: "24px", textAlign: "center" }}>
-        Total turns: {board.totalTurns}
-      </p>
-
       <div className="modal hidden" ref={modalRef}>
         <div className="modal-body">
           <img

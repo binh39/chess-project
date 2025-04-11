@@ -3,7 +3,7 @@ import React from "react";
 import "./Chessboard.css";
 import Tile from "../Tile/Tile";
 import { VERTICAL_AXIS, HORIZONTAL_AXIS, GRID_SIZE } from "../../Constants";
-import { Piece, Position } from "../../models";
+import { Position } from "../../models";
 
 export default function Chessboard({ playMove, pieces }) {
   const [activePiece, setActivePiece] = useState(null);
