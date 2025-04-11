@@ -1,7 +1,12 @@
 import "./App.css";
+import Referee from "./components/Referee/Referee";
 
 function App() {
-  return <></>;
+  return (
+    <div id="app">
+      <Referee />
+    </div>
+  );
 }
 
 export default App;

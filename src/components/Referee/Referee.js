@@ -128,22 +128,52 @@ export default function Referee() {
     let validMove = false;
     switch (type) {
       case PieceType.PAWN:
-        validMove = pawnMove(initialPosition, desiredPosition, team, board.pieces);
+        validMove = pawnMove(
+          initialPosition,
+          desiredPosition,
+          team,
+          board.pieces
+        );
         break;
       case PieceType.KNIGHT:
-        validMove = knightMove(initialPosition, desiredPosition, team, board.pieces);
+        validMove = knightMove(
+          initialPosition,
+          desiredPosition,
+          team,
+          board.pieces
+        );
         break;
       case PieceType.BISHOP:
-        validMove = bishopMove(initialPosition, desiredPosition, team, board.pieces);
+        validMove = bishopMove(
+          initialPosition,
+          desiredPosition,
+          team,
+          board.pieces
+        );
         break;
       case PieceType.ROOK:
-        validMove = rookMove(initialPosition, desiredPosition, team, board.pieces);
+        validMove = rookMove(
+          initialPosition,
+          desiredPosition,
+          team,
+          board.pieces
+        );
         break;
       case PieceType.QUEEN:
-        validMove = queenMove(initialPosition, desiredPosition, team, board.pieces);
+        validMove = queenMove(
+          initialPosition,
+          desiredPosition,
+          team,
+          board.pieces
+        );
         break;
       case PieceType.KING:
-        validMove = kingMove(initialPosition, desiredPosition, team, board.pieces);
+        validMove = kingMove(
+          initialPosition,
+          desiredPosition,
+          team,
+          board.pieces
+        );
         break;
     }
     return validMove;
@@ -213,7 +243,8 @@ export default function Referee() {
         <div className="modal-body">
           <div className="checkmate-body">
             <span>
-              The winning team is {board.winningTeam === TeamType.OUR ? "white" : "black"}!
+              The winning team is{" "}
+              {board.winningTeam === TeamType.OUR ? "white" : "black"}!
             </span>
             <button onClick={restartGame}>Play again</button>
           </div>

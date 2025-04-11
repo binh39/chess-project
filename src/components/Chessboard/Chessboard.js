@@ -1,10 +1,8 @@
 import { useRef, useState } from "react";
+import React from "react";
+import "./Chessboard.css";
 import Tile from "../Tile/Tile";
-import {
-  VERTICAL_AXIS,
-  HORIZONTAL_AXIS,
-  GRID_SIZE,
-} from "../../Constants";
+import { VERTICAL_AXIS, HORIZONTAL_AXIS, GRID_SIZE } from "../../Constants";
 import { Piece, Position } from "../../models";
 
 export default function Chessboard({ playMove, pieces }) {
@@ -69,9 +67,7 @@ export default function Chessboard({ playMove, pieces }) {
         Math.ceil((e.clientY - chessboard.offsetTop - 800) / GRID_SIZE)
       );
 
-      const currentPiece = pieces.find((p) =>
-        p.samePosition(grabPosition)
-      );
+      const currentPiece = pieces.find((p) => p.samePosition(grabPosition));
 
       if (currentPiece) {
         const succes = playMove(currentPiece.clone(), new Position(x, y));
@@ -91,17 +87,16 @@ export default function Chessboard({ playMove, pieces }) {
   for (let j = VERTICAL_AXIS.length - 1; j >= 0; j--) {
     for (let i = 0; i < HORIZONTAL_AXIS.length; i++) {
       const number = j + i + 2;
-      const piece = pieces.find((p) =>
-        p.samePosition(new Position(i, j))
-      );
+      const piece = pieces.find((p) => p.samePosition(new Position(i, j)));
       const image = piece ? piece.image : undefined;
 
-      const currentPiece = activePiece !== null
-        ? pieces.find(p => p.samePosition(grabPosition))
-        : undefined;
+      const currentPiece =
+        activePiece !== null
+          ? pieces.find((p) => p.samePosition(grabPosition))
+          : undefined;
 
       const highlight = currentPiece?.possibleMoves
-        ? currentPiece.possibleMoves.some(p =>
+        ? currentPiece.possibleMoves.some((p) =>
             p.samePosition(new Position(i, j))
           )
         : false;
@@ -111,7 +106,7 @@ export default function Chessboard({ playMove, pieces }) {
           key: `${j},${i}`,
           image: image,
           number: number,
-          highlight: highlight
+          highlight: highlight,
         })
       );
     }
