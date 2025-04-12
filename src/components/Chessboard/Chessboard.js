@@ -9,7 +9,7 @@ export default function Chessboard({ playMove, pieces }) {
   const [activePiece, setActivePiece] = useState(null);
   const [grabPosition, setGrabPosition] = useState(new Position(-1, -1));
   const chessboardRef = useRef(null);
-
+  
   function grabPiece(e) {
     const element = e.target;
     const chessboard = chessboardRef.current;

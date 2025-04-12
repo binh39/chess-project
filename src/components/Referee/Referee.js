@@ -1,253 +1,181 @@
 import { useEffect, useRef, useState } from "react";
-import { initialBoard } from "../../Constants";
-import { Piece, Position } from "../../models";
-import { Board } from "../../models/Board";
-import { Pawn } from "../../models/Pawn";
-import {
-  bishopMove,
-  getPossibleBishopMoves,
-  getPossibleKingMoves,
-  getPossibleKnightMoves,
-  getPossiblePawnMoves,
-  getPossibleQueenMoves,
-  getPossibleRookMoves,
-  kingMove,
-  knightMove,
-  pawnMove,
-  queenMove,
-  rookMove,
-} from "../../referee/rules";
 import { PieceType, TeamType } from "../../Types";
 import Chessboard from "../Chessboard/Chessboard";
 import { Howl } from "howler";
+import { convertBackendPieces } from "../Referee/pieceConverter";
 
-const moveSound = new Howl({
-  src: ["/sounds/move-self.mp3"],
-});
-
-const captureSound = new Howl({
-  src: ["/sounds/capture.mp3"],
-});
-
-const checkmateSound = new Howl({
-  src: ["/sounds/move-check.mp3"],
-});
+const moveSound = new Howl({ src: ["/sounds/move-self.mp3"] });
+const captureSound = new Howl({ src: ["/sounds/capture.mp3"] });
+const checkmateSound = new Howl({ src: ["/sounds/move-check.mp3"] });
 
 export default function Referee() {
-  const [board, setBoard] = useState(initialBoard.clone());
-  const [promotionPawn, setPromotionPawn] = useState();
+  const [boardState, setBoardState] = useState(null);
+  const [promotionData, setPromotionData] = useState(null);
   const modalRef = useRef(null);
   const checkmateModalRef = useRef(null);
 
-  function playMove(playedPiece, destination) {
-    if (playedPiece.possibleMoves === undefined) return false;
+  useEffect(() => {
+    fetch("http://localhost:8000/state")
+      .then(res => res.json())
+      .then(data => {
+        const converted = convertBackendPieces(data.pieces);
+        setBoardState({ ...data, pieces: converted });
+      });
+  }, []);
 
-    if (playedPiece.team === TeamType.OUR && board.totalTurns % 2 !== 1)
-      return false;
-    if (playedPiece.team === TeamType.OPPONENT && board.totalTurns % 2 !== 0)
-      return false;
+  useEffect(() => {
+    if (boardState) {
+      console.log(boardState.pieces);
+    }
+  }, [boardState]);
 
-    let playedMoveIsValid = false;
+  async function playMove(playedPiece, destination) {
+    const from = playedPiece.position;
+    const to = destination;
 
-    const validMove = playedPiece.possibleMoves?.some((m) =>
-      m.samePosition(destination)
-    );
+    const from_square = String.fromCharCode(97 + from.x) + (from.y + 1);
+    const to_square = String.fromCharCode(97 + to.x) + (to.y + 1);
 
-    if (!validMove) return false;
+    const promotionRank = playedPiece.team === TeamType.OUR ? 7 : 0;
 
-    const enPassantMove = isEnPassantMove(
-      playedPiece.position,
-      destination,
-      playedPiece.type,
-      playedPiece.team
-    );
+    // Nếu là tốt và đến hàng phong hậu
+    if (playedPiece.type === PieceType.PAWN && to.y === promotionRank) {
+      setPromotionData({
+        from: from_square,
+        to: to_square,
+        color: playedPiece.team === TeamType.OUR ? "w" : "b"
+      });
+      modalRef.current?.classList.remove("hidden");
+      return; // chờ người dùng chọn quân phong hậu
+    }
 
-    setBoard(() => {
-      const clonedBoard = board.clone();
-      clonedBoard.totalTurns += 1;
+    // Di chuyển bình thường
+    await sendMove(from_square, to_square);
+  }
 
-      playedMoveIsValid = clonedBoard.playMove(
-        enPassantMove,
-        validMove,
-        playedPiece,
-        destination
-      );
+  // Hàm dùng chung để gửi move
+  async function sendMove(from_square, to_square_with_promotion = null) {
+    const body = {
+      from_square,
+      to_square: to_square_with_promotion ?? from_square + to_square_with_promotion
+    };
 
-      if (playedMoveIsValid) {
-        moveSound.play();
-      }
+    const res = await fetch("http://localhost:8000/move", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
 
-      if (clonedBoard.winningTeam !== undefined) {
+    const data = await res.json();
+    if (data.success) {
+      const convertedPieces = convertBackendPieces(data.state.pieces);
+      setBoardState({ ...data.state, pieces: convertedPieces });
+      modalRef.current?.classList.add("hidden");
+      moveSound.play();
+
+      if (data.state.is_checkmate) {
         checkmateModalRef.current?.classList.remove("hidden");
         checkmateSound.play();
       }
+    }
+  }
 
-      return clonedBoard;
-    });
-
-    let promotionRow = playedPiece.team === TeamType.OUR ? 7 : 0;
-
-    if (destination.y === promotionRow && playedPiece.isPawn) {
-      modalRef.current?.classList.remove("hidden");
-      setPromotionPawn(() => {
-        const clonedPlayedPiece = playedPiece.clone();
-        clonedPlayedPiece.position = destination.clone();
-        return clonedPlayedPiece;
+  // Gửi phong hậu lên backend
+  async function promotePawn(pieceType) {
+    if (!promotionData) return;
+  
+    // 👉 Ưu tiên xác định dựa vào current turn
+    const promotionLetter = {
+      [PieceType.QUEEN]: "q",
+      [PieceType.ROOK]: "r",
+      [PieceType.BISHOP]:"b",
+      [PieceType.KNIGHT]: "n",
+    }[pieceType];
+  
+    const move = {
+      from_square: promotionData.from,
+      to_square: promotionData.to + promotionLetter // ví dụ: e7e8Q
+    };
+    console.log(move);
+    try {
+      const res = await fetch("http://localhost:8000/move", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(move)
       });
-    }
-
-    return playedMoveIsValid;
-  }
-
-  function isEnPassantMove(initialPosition, desiredPosition, type, team) {
-    const pawnDirection = team === TeamType.OUR ? 1 : -1;
-
-    if (type === PieceType.PAWN) {
-      if (
-        (desiredPosition.x - initialPosition.x === -1 ||
-          desiredPosition.x - initialPosition.x === 1) &&
-        desiredPosition.y - initialPosition.y === pawnDirection
-      ) {
-        const piece = board.pieces.find(
-          (p) =>
-            p.position.x === desiredPosition.x &&
-            p.position.y === desiredPosition.y - pawnDirection &&
-            p.isPawn &&
-            p.enPassant
-        );
-        if (piece) {
-          return true;
+  
+      const data = await res.json();
+  
+      if (data.success) {
+        const converted = convertBackendPieces(data.state.pieces);
+        setBoardState({ ...data.state, pieces: converted });
+  
+        modalRef.current?.classList.add("hidden");
+        moveSound.play();
+  
+        if (data.state.is_checkmate) {
+          checkmateModalRef.current?.classList.remove("hidden");
+          checkmateSound.play();
         }
+      } else {
+        console.error("Promotion failed:", data.message || data);
       }
+    } catch (err) {
+      console.error("Promotion error:", err);
     }
-
-    return false;
   }
-
-  function isValidMove(initialPosition, desiredPosition, type, team) {
-    let validMove = false;
-    switch (type) {
-      case PieceType.PAWN:
-        validMove = pawnMove(
-          initialPosition,
-          desiredPosition,
-          team,
-          board.pieces
-        );
-        break;
-      case PieceType.KNIGHT:
-        validMove = knightMove(
-          initialPosition,
-          desiredPosition,
-          team,
-          board.pieces
-        );
-        break;
-      case PieceType.BISHOP:
-        validMove = bishopMove(
-          initialPosition,
-          desiredPosition,
-          team,
-          board.pieces
-        );
-        break;
-      case PieceType.ROOK:
-        validMove = rookMove(
-          initialPosition,
-          desiredPosition,
-          team,
-          board.pieces
-        );
-        break;
-      case PieceType.QUEEN:
-        validMove = queenMove(
-          initialPosition,
-          desiredPosition,
-          team,
-          board.pieces
-        );
-        break;
-      case PieceType.KING:
-        validMove = kingMove(
-          initialPosition,
-          desiredPosition,
-          team,
-          board.pieces
-        );
-        break;
-    }
-    return validMove;
-  }
-
-  function promotePawn(pieceType) {
-    if (!promotionPawn) return;
-
-    setBoard(() => {
-      const clonedBoard = board.clone();
-      clonedBoard.pieces = clonedBoard.pieces.reduce((results, piece) => {
-        if (piece.samePiecePosition(promotionPawn)) {
-          results.push(
-            new Piece(piece.position.clone(), pieceType, piece.team, true)
-          );
-        } else {
-          results.push(piece);
-        }
-        return results;
-      }, []);
-
-      clonedBoard.calculateAllMoves();
-
-      return clonedBoard;
-    });
-
-    modalRef.current?.classList.add("hidden");
-  }
-
-  function promotionTeamType() {
-    return promotionPawn?.team === TeamType.OUR ? "w" : "b";
-  }
+  
+  
 
   function restartGame() {
-    checkmateModalRef.current?.classList.add("hidden");
-    setBoard(initialBoard.clone());
+    fetch("http://localhost:8000/state")
+      .then(res => res.json())
+      .then(data => {
+        const converted = convertBackendPieces(data.pieces);
+        setBoardState({ ...data, pieces: converted });
+        checkmateModalRef.current?.classList.add("hidden");
+      });
   }
+
+  if (!boardState) return <div>Đang tải bàn cờ...</div>;
 
   return (
     <>
+      {/* Modal phong hậu */}
       <div className="modal hidden" ref={modalRef}>
         <div className="modal-body">
           <img
             onClick={() => promotePawn(PieceType.ROOK)}
-            src={`/assets/images/rook_${promotionTeamType()}.png`}
+            src={`/assets/images/rook_${promotionData?.color}.png`}
           />
           <img
             onClick={() => promotePawn(PieceType.BISHOP)}
-            src={`/assets/images/bishop_${promotionTeamType()}.png`}
+            src={`/assets/images/bishop_${promotionData?.color}.png`}
           />
           <img
             onClick={() => promotePawn(PieceType.KNIGHT)}
-            src={`/assets/images/knight_${promotionTeamType()}.png`}
+            src={`/assets/images/knight_${promotionData?.color}.png`}
           />
           <img
             onClick={() => promotePawn(PieceType.QUEEN)}
-            src={`/assets/images/queen_${promotionTeamType()}.png`}
+            src={`/assets/images/queen_${promotionData?.color}.png`}
           />
         </div>
       </div>
 
+      {/* Modal checkmate */}
       <div className="modal hidden" ref={checkmateModalRef}>
         <div className="modal-body">
           <div className="checkmate-body">
             <span>
-              The winning team is{" "}
-              {board.winningTeam === TeamType.OUR ? "white" : "black"}!
+              The winning team is {boardState.turn === "white" ? "black" : "white"}!
             </span>
             <button onClick={restartGame}>Play again</button>
           </div>
         </div>
       </div>
 
-      <Chessboard playMove={playMove} pieces={board.pieces} />
+      <Chessboard playMove={playMove} pieces={boardState.pieces} />
     </>
   );
 }
