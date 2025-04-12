@@ -9,63 +9,40 @@ export default function Chessboard({ playMove, pieces }) {
   const [activePiece, setActivePiece] = useState(null);
   const [grabPosition, setGrabPosition] = useState(new Position(-1, -1));
   const chessboardRef = useRef(null);
-  
+
   function grabPiece(e) {
     const element = e.target;
     const chessboard = chessboardRef.current;
-    if (element.classList.contains("chess-piece") && chessboard) {
-      const grabX = Math.floor((e.clientX - chessboard.offsetLeft) / GRID_SIZE);
-      const grabY = Math.abs(
-        Math.ceil((e.clientY - chessboard.offsetTop - 800) / GRID_SIZE)
-      );
+
+    if (
+      element.classList.contains("chess-piece") &&
+      chessboard &&
+      activePiece == element
+    ) {
+      setActivePiece(null);
+      return;
+    } else if (
+      element.classList.contains("chess-piece") &&
+      chessboard &&
+      activePiece != element
+    ) {
+      const clickX = e.clientX - chessboard.offsetLeft;
+      const clickY = e.clientY - chessboard.offsetTop - 800;
+      const grabX = Math.floor(clickX / GRID_SIZE);
+      const grabY = Math.abs(Math.ceil(clickY / GRID_SIZE));
       setGrabPosition(new Position(grabX, grabY));
-
-      const x = e.clientX - GRID_SIZE / 2;
-      const y = e.clientY - GRID_SIZE / 2;
-      element.style.position = "absolute";
-      element.style.left = `${x}px`;
-      element.style.top = `${y}px`;
-
       setActivePiece(element);
+      return;
+    } else if (!element || !element.classList.contains("chess-piece")) {
+      setActivePiece(null);
+      return;
     }
-  }
 
-  function movePiece(e) {
-    const chessboard = chessboardRef.current;
     if (activePiece && chessboard) {
-      const minX = chessboard.offsetLeft - 25;
-      const minY = chessboard.offsetTop - 25;
-      const maxX = chessboard.offsetLeft + chessboard.clientWidth - 75;
-      const maxY = chessboard.offsetTop + chessboard.clientHeight - 75;
-      const x = e.clientX - 50;
-      const y = e.clientY - 50;
-      activePiece.style.position = "absolute";
-
-      if (x < minX) {
-        activePiece.style.left = `${minX}px`;
-      } else if (x > maxX) {
-        activePiece.style.left = `${maxX}px`;
-      } else {
-        activePiece.style.left = `${x}px`;
-      }
-
-      if (y < minY) {
-        activePiece.style.top = `${minY}px`;
-      } else if (y > maxY) {
-        activePiece.style.top = `${maxY}px`;
-      } else {
-        activePiece.style.top = `${y}px`;
-      }
-    }
-  }
-
-  function dropPiece(e) {
-    const chessboard = chessboardRef.current;
-    if (activePiece && chessboard) {
-      const x = Math.floor((e.clientX - chessboard.offsetLeft) / GRID_SIZE);
-      const y = Math.abs(
-        Math.ceil((e.clientY - chessboard.offsetTop - 800) / GRID_SIZE)
-      );
+      const clickX = e.clientX - chessboard.offsetLeft;
+      const clickY = e.clientY - chessboard.offsetTop - 800;
+      const x = Math.floor(clickX / GRID_SIZE);
+      const y = Math.abs(Math.ceil(clickY / GRID_SIZE));
 
       const currentPiece = pieces.find((p) => p.samePosition(grabPosition));
 
@@ -78,7 +55,7 @@ export default function Chessboard({ playMove, pieces }) {
           activePiece.style.removeProperty("left");
         }
       }
-      setActivePiece(null);
+      return;
     }
   }
 
@@ -117,9 +94,7 @@ export default function Chessboard({ playMove, pieces }) {
     {
       id: "chessboard",
       ref: chessboardRef,
-      onMouseMove: movePiece,
-      onMouseDown: grabPiece,
-      onMouseUp: dropPiece,
+      onClick: grabPiece,
     },
     board
   );

@@ -16,8 +16,8 @@ export default function Referee() {
 
   useEffect(() => {
     fetch("http://localhost:8000/state")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         const converted = convertBackendPieces(data.pieces);
         setBoardState({ ...data, pieces: converted });
       });
@@ -43,7 +43,7 @@ export default function Referee() {
       setPromotionData({
         from: from_square,
         to: to_square,
-        color: playedPiece.team === TeamType.OUR ? "w" : "b"
+        color: playedPiece.team === TeamType.OUR ? "w" : "b",
       });
       modalRef.current?.classList.remove("hidden");
       return; // chờ người dùng chọn quân phong hậu
@@ -57,13 +57,14 @@ export default function Referee() {
   async function sendMove(from_square, to_square_with_promotion = null) {
     const body = {
       from_square,
-      to_square: to_square_with_promotion ?? from_square + to_square_with_promotion
+      to_square:
+        to_square_with_promotion ?? from_square + to_square_with_promotion,
     };
 
     const res = await fetch("http://localhost:8000/move", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
 
     const data = await res.json();
@@ -83,36 +84,36 @@ export default function Referee() {
   // Gửi phong hậu lên backend
   async function promotePawn(pieceType) {
     if (!promotionData) return;
-  
+
     // 👉 Ưu tiên xác định dựa vào current turn
     const promotionLetter = {
       [PieceType.QUEEN]: "q",
       [PieceType.ROOK]: "r",
-      [PieceType.BISHOP]:"b",
+      [PieceType.BISHOP]: "b",
       [PieceType.KNIGHT]: "n",
     }[pieceType];
-  
+
     const move = {
       from_square: promotionData.from,
-      to_square: promotionData.to + promotionLetter // ví dụ: e7e8Q
+      to_square: promotionData.to + promotionLetter, // ví dụ: e7e8Q
     };
     console.log(move);
     try {
       const res = await fetch("http://localhost:8000/move", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(move)
+        body: JSON.stringify(move),
       });
-  
+
       const data = await res.json();
-  
+
       if (data.success) {
         const converted = convertBackendPieces(data.state.pieces);
         setBoardState({ ...data.state, pieces: converted });
-  
+
         modalRef.current?.classList.add("hidden");
         moveSound.play();
-  
+
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
@@ -124,13 +125,11 @@ export default function Referee() {
       console.error("Promotion error:", err);
     }
   }
-  
-  
 
   function restartGame() {
     fetch("http://localhost:8000/state")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         const converted = convertBackendPieces(data.pieces);
         setBoardState({ ...data, pieces: converted });
         checkmateModalRef.current?.classList.add("hidden");
@@ -163,12 +162,13 @@ export default function Referee() {
         </div>
       </div>
 
-      {/* Modal checkmate */}
+      {/* Modal endgame */}
       <div className="modal hidden" ref={checkmateModalRef}>
         <div className="modal-body">
           <div className="checkmate-body">
             <span>
-              The winning team is {boardState.turn === "white" ? "black" : "white"}!
+              The winning team is{" "}
+              {boardState.turn === "white" ? "black" : "white"}!
             </span>
             <button onClick={restartGame}>Play again</button>
           </div>
