@@ -5,29 +5,79 @@ import { Howl } from "howler";
 import { convertBackendPieces } from "../Referee/pieceConverter";
 
 const moveSound = new Howl({ src: ["/sounds/move-self.mp3"] });
-const captureSound = new Howl({ src: ["/sounds/capture.mp3"] });
 const checkmateSound = new Howl({ src: ["/sounds/move-check.mp3"] });
 
-export default function Referee() {
+export default function Referee({
+  isPlayerVsBot,
+  isBotVsBot,
+  setThinkingTime,
+  setCurrentTurn,
+  isRestarting,
+  resetTrigger,
+}) {
   const [boardState, setBoardState] = useState(null);
   const [promotionData, setPromotionData] = useState(null);
   const modalRef = useRef(null);
   const checkmateModalRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/state")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchBoardState = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/state");
+        const data = await res.json();
         const converted = convertBackendPieces(data.pieces);
         setBoardState({ ...data, pieces: converted });
-      });
-  }, []);
+      } catch (err) {
+        console.error("Failed to fetch /state:", err);
+      }
+    };
+    fetchBoardState();
+  }, [resetTrigger]);
 
   useEffect(() => {
-    if (boardState) {
-      console.log(boardState.pieces);
+    if (boardState && !isRestarting) {
+      setCurrentTurn(boardState.turn);
+      // Nếu là chế độ Bot VS Bot, bot tự động chơi cho cả hai bên
+      if (isBotVsBot && !boardState.is_checkmate) {
+        playBotMove();
+      }
+      // Nếu là chế độ Player VS Bot và đến lượt bot (đen)
+      else if (
+        isPlayerVsBot &&
+        boardState.turn === "black" &&
+        !boardState.is_checkmate
+      ) {
+        playBotMove();
+      }
     }
-  }, [boardState]);
+  }, [boardState, isPlayerVsBot, isBotVsBot, setCurrentTurn, isRestarting]);
+
+  async function playBotMove() {
+    // Đếm thời gian suy nghĩ
+    let time = 0;
+    const interval = setInterval(() => {
+      time += 1;
+      setThinkingTime(time);
+    }, 1000);
+
+    const res = await fetch("http://localhost:8000/bot_move", {
+      method: "POST",
+    });
+
+    clearInterval(interval);
+    setThinkingTime(null); // Reset thời gian sau khi bot đi xong
+
+    const data = await res.json();
+    if (data.success) {
+      const convertedPieces = convertBackendPieces(data.state.pieces);
+      setBoardState({ ...data.state, pieces: convertedPieces });
+      moveSound.play();
+      if (data.state.is_checkmate) {
+        checkmateModalRef.current?.classList.remove("hidden");
+        checkmateSound.play();
+      }
+    }
+  }
 
   async function playMove(playedPiece, destination) {
     const from = playedPiece.position;
@@ -38,15 +88,19 @@ export default function Referee() {
 
     const promotionRank = playedPiece.team === TeamType.OUR ? 7 : 0;
 
-    // Nếu là tốt và đến hàng phong hậu
-    if (playedPiece.type === PieceType.PAWN && to.y === promotionRank) {
+    // Nếu là người chơi (trắng) và cần phong hậu, hiển thị modal
+    if (
+      playedPiece.type === PieceType.PAWN &&
+      to.y === promotionRank &&
+      !isBotVsBot
+    ) {
       setPromotionData({
         from: from_square,
         to: to_square,
         color: playedPiece.team === TeamType.OUR ? "w" : "b",
       });
       modalRef.current?.classList.remove("hidden");
-      return; // chờ người dùng chọn quân phong hậu
+      return;
     }
 
     // Di chuyển bình thường
@@ -144,7 +198,7 @@ export default function Referee() {
         console.error("Lỗi reset game: Không có dữ liệu bàn cờ");
       }
     } catch (err) {
-      console.error("🔥 Lỗi gọi /restart:", err);
+      console.error("Lỗi gọi /restart:", err);
     }
   }
 

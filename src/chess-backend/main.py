@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from models import  PieceModel, Position, MoveRequest,  SquareRequest
-from game_engine import make_move, get_game_state, initialize_board, is_valid_move, calculate_valid_moves
+from game_engine import make_move, get_game_state, initialize_board, is_valid_move, calculate_valid_moves, bot_move
 
 app = FastAPI()
 
@@ -21,6 +21,11 @@ def get_state():
 def play_move(move: MoveRequest):
     success = make_move(move.from_square, move.to_square)
     return {"success": success, "state": get_game_state()}
+
+@app.post("/bot_move")
+def play_bot_move():
+    success, move = bot_move()
+    return {"success": success, "move": move, "state": get_game_state()}
 
 @app.post("/restart")
 def restart_game():

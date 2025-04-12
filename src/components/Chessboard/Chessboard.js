@@ -13,7 +13,6 @@ export default function Chessboard({ playMove, pieces }) {
   function grabPiece(e) {
     const element = e.target;
     const chessboard = chessboardRef.current;
-
     if (
       element.classList.contains("chess-piece") &&
       chessboard &&
@@ -33,7 +32,11 @@ export default function Chessboard({ playMove, pieces }) {
       setGrabPosition(new Position(grabX, grabY));
       setActivePiece(element);
       return;
-    } else if (!element || !element.classList.contains("chess-piece")) {
+    } else if (
+      !element ||
+      (!element.classList.contains("chess-piece") &&
+        !element.classList.contains("tile-highlight"))
+    ) {
       setActivePiece(null);
       return;
     }
@@ -45,7 +48,6 @@ export default function Chessboard({ playMove, pieces }) {
       const y = Math.abs(Math.ceil(clickY / GRID_SIZE));
 
       const currentPiece = pieces.find((p) => p.samePosition(grabPosition));
-
       if (currentPiece) {
         const succes = playMove(currentPiece.clone(), new Position(x, y));
 

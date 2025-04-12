@@ -32,7 +32,7 @@ body {
   gap: 20px;
 }
 
-#menu .buttonPlay {
+#menu .buttonBase {
   height: 70px;
   width: 300px;
   border-radius: 10px;
@@ -44,12 +44,29 @@ body {
   color: white;
 }
 
-#menu .buttonPlay:hover {
+#menu .buttonBase:hover {
   background-color: rgb(157, 212, 101);
   transition-duration: 0.2s;
 }
 
-#menu .buttonPlay:active {
+#menu .buttonBase:active {
   background-color: rgb(83, 132, 34);
   transform: translateY(3px);
+}
+#menu .Status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebecd0;
+  color: #779556;
+  height: 70px;
+  width: 300px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.hidden {
+  display: none !important;
 }
