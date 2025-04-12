@@ -84,7 +84,7 @@ export default function Referee() {
   async function promotePawn(pieceType) {
     if (!promotionData) return;
   
-    // 👉 Ưu tiên xác định dựa vào current turn
+    //Ưu tiên xác định dựa vào current turn
     const promotionLetter = {
       [PieceType.QUEEN]: "q",
       [PieceType.ROOK]: "r",
@@ -127,14 +127,26 @@ export default function Referee() {
   
   
 
-  function restartGame() {
-    fetch("http://localhost:8000/state")
-      .then(res => res.json())
-      .then(data => {
+  async function restartGame() {
+    try {
+      const res = await fetch("http://localhost:8000/restart", {
+        method: "POST"
+      });
+  
+      const data = await res.json();
+  
+      if (data.pieces) {
         const converted = convertBackendPieces(data.pieces);
         setBoardState({ ...data, pieces: converted });
+  
+        // Ẩn modal checkmate nếu có
         checkmateModalRef.current?.classList.add("hidden");
-      });
+      } else {
+        console.error("Lỗi reset game: Không có dữ liệu bàn cờ");
+      }
+    } catch (err) {
+      console.error("🔥 Lỗi gọi /restart:", err);
+    }
   }
 
   if (!boardState) return <div>Đang tải bàn cờ...</div>;
