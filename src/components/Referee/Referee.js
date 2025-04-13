@@ -66,6 +66,12 @@ export default function Referee({
     }
   }, [boardState, isPlayerVsBot, isBotVsBot, setCurrentTurn, isRestarting]);
 
+  useEffect(() => {
+    if (controllerRef.current && isPlayerVsBot) {
+      controllerRef.current.abort(); // Hủy fetch cũ khi chuyển mode
+    }
+  }, [isPlayerVsBot]);
+
   async function playBotMove() {
     // Khởi tạo controller mới mỗi lần gọi
     const controller = new AbortController();
