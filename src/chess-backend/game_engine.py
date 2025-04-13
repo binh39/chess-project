@@ -163,6 +163,9 @@ def bot_move():
             return False, None
         move = mcts_search(board, max_time=MAX_TIME)
         piece = board.piece_at(move.from_square)
+        if piece is None:
+            print(" Invalid move: from_square has no piece.")
+            return False, None
         is_promotion = (
             piece.piece_type == chess.PAWN and
             ((piece.color == chess.WHITE and move.to_square // 8 == 7) or

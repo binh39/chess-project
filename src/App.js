@@ -10,6 +10,7 @@ function App() {
   const [isStart, setIsStart] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
   const [resetTrigger, setResetTrigger] = useState(0);
+  const [restart, setRestart] = useState(false);
 
   const startPlayerVsBot = () => {
     setIsPlayerVsBot(true);
@@ -28,27 +29,17 @@ function App() {
   };
 
   const restartGame = async () => {
+    setIsStart(false);
     setIsRestarting(true);
-    try {
-      const res = await fetch("http://localhost:8000/restart", {
-        method: "POST",
-      });
-      const data = await res.json();
-      if (data.pieces) {
-        setIsPlayerVsBot(false);
-        setIsBotVsBot(false);
-        setThinkingTime(null);
-        setCurrentTurn(null);
-        setIsStart(false);
-        setIsRestarting(false);
-        setResetTrigger((prev) => prev + 1);
-      } else {
-        console.error("Lỗi reset game: Không có dữ liệu bàn cờ");
-      }
-    } catch (err) {
-      console.error("🔥 Lỗi gọi /restart:", err);
-      setIsRestarting(false);
-    }
+    setIsPlayerVsBot(false);
+    setIsBotVsBot(false);
+    setThinkingTime(null);
+    setCurrentTurn(null);
+    
+    setResetTrigger((prev) => prev + 1);
+    
+    setIsRestarting(false);
+    setRestart(true);
   };
   return (
     <div id="mid">
@@ -58,8 +49,13 @@ function App() {
           isBotVsBot={isBotVsBot}
           setThinkingTime={setThinkingTime}
           setCurrentTurn={setCurrentTurn}
+          currentTurn={currentTurn}
           isRestarting={isRestarting}
           resetTrigger={resetTrigger}
+          restart = {restart}
+          setRestart = {setRestart}
+          isStart={isStart}
+          setIsStart={setIsStart}
         />
       </div>
       <div id="menu">

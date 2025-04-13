@@ -12,13 +12,19 @@ export default function Referee({
   isBotVsBot,
   setThinkingTime,
   setCurrentTurn,
+  currentTurn,
   isRestarting,
   resetTrigger,
+  restart,
+  setRestart,
+  isStart,
+  setIsStart,
 }) {
   const [boardState, setBoardState] = useState(null);
   const [promotionData, setPromotionData] = useState(null);
   const modalRef = useRef(null);
   const checkmateModalRef = useRef(null);
+  const controllerRef = useRef(null);
 
   useEffect(() => {
     const fetchBoardState = async () => {
@@ -32,10 +38,18 @@ export default function Referee({
       }
     };
     fetchBoardState();
-  }, [resetTrigger]);
+  }, []);
+
+  useEffect(()=> {
+    if(restart) {
+      restartGame();
+    }
+    setRestart(false);
+    setIsStart(false);
+  }, [restart]);
 
   useEffect(() => {
-    if (boardState && !isRestarting) {
+    if (boardState && !isRestarting && isStart) {
       setCurrentTurn(boardState.turn);
       // Nếu là chế độ Bot VS Bot, bot tự động chơi cho cả hai bên
       if (isBotVsBot && !boardState.is_checkmate) {
@@ -53,31 +67,45 @@ export default function Referee({
   }, [boardState, isPlayerVsBot, isBotVsBot, setCurrentTurn, isRestarting]);
 
   async function playBotMove() {
-    // Đếm thời gian suy nghĩ
+    // Khởi tạo controller mới mỗi lần gọi
+    const controller = new AbortController();
+    controllerRef.current = controller;
+  
     let time = 0;
     const interval = setInterval(() => {
       time += 1;
       setThinkingTime(time);
     }, 1000);
-
-    const res = await fetch("http://localhost:8000/bot_move", {
-      method: "POST",
-    });
-
-    clearInterval(interval);
-    setThinkingTime(null); // Reset thời gian sau khi bot đi xong
-
-    const data = await res.json();
-    if (data.success) {
-      const convertedPieces = convertBackendPieces(data.state.pieces);
-      setBoardState({ ...data.state, pieces: convertedPieces });
-      moveSound.play();
-      if (data.state.is_checkmate) {
-        checkmateModalRef.current?.classList.remove("hidden");
-        checkmateSound.play();
+  
+    try {
+      const res = await fetch("http://localhost:8000/bot_move", {
+        method: "POST",
+        signal: controller.signal, // dùng tín hiệu để có thể hủy fetch
+      });
+  
+      const data = await res.json();
+      if (data.success) {
+        const convertedPieces = convertBackendPieces(data.state.pieces);
+        setBoardState({ ...data.state, pieces: convertedPieces });
+        moveSound.play();
+  
+        if (data.state.is_checkmate) {
+          checkmateModalRef.current?.classList.remove("hidden");
+          checkmateSound.play();
+        }
       }
+    } catch (err) {
+      if (err.name === "AbortError") {
+        console.log("Bot move bị huỷ do restart.");
+      } else {
+        console.error("Lỗi playBotMove:", err);
+      }
+    } finally {
+      clearInterval(interval);
+      setThinkingTime(null);
     }
   }
+  
 
   async function playMove(playedPiece, destination) {
     const from = playedPiece.position;
@@ -179,9 +207,13 @@ export default function Referee({
       console.error("Promotion error:", err);
     }
   }
-
+  
   async function restartGame() {
     try {
+      // Hủy bot đang chạy
+    if (controllerRef.current) {
+      controllerRef.current.abort(); // Hủy bot nếu đang chạy
+    }
       const res = await fetch("http://localhost:8000/restart", {
         method: "POST",
       });
