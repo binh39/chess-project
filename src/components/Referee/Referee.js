@@ -67,7 +67,7 @@ export default function Referee({
   }, [boardState, isPlayerVsBot, isBotVsBot, setCurrentTurn, isRestarting]);
 
   useEffect(() => {
-    if (controllerRef.current && isPlayerVsBot) {
+    if (controllerRef.current && isPlayerVsBot && boardState.turn === "black") {
       controllerRef.current.abort(); // Hủy fetch cũ khi chuyển mode
     }
   }, [isPlayerVsBot]);
