@@ -280,7 +280,11 @@ export default function Referee({
         </div>
       </div>
 
-      <Chessboard playMove={playMove} pieces={boardState.pieces} />
+      <Chessboard
+        playMove={playMove}
+        pieces={boardState.pieces}
+        isStart={isStart}
+      />
     </>
   );
 }
