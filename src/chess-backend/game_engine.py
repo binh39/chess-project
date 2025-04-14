@@ -4,12 +4,15 @@ import math
 import time
 from models import GameState, Piece
 
+
 board = chess.Board()
 MAX_TIME = 2
 
+
 def initialize_board():
     global board
-    board = chess.Board() 
+    
+    board = chess.Board()
 
 # --- MCTS Implementation ---
 class MCTSNode:
