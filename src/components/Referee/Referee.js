@@ -14,7 +14,6 @@ export default function Referee({
   setCurrentTurn,
   currentTurn,
   isRestarting,
-  resetTrigger,
   restart,
   setRestart,
   isStart,
@@ -40,8 +39,8 @@ export default function Referee({
     fetchBoardState();
   }, []);
 
-  useEffect(()=> {
-    if(restart) {
+  useEffect(() => {
+    if (restart) {
       restartGame();
     }
     setRestart(false);
@@ -72,29 +71,34 @@ export default function Referee({
     }
   }, [isPlayerVsBot]);
 
-  async function playBotMove() {
-    // Khởi tạo controller mới mỗi lần gọi
-    const controller = new AbortController();
-    controllerRef.current = controller;
-  
+  useEffect(() => {
+    setThinkingTime(0);
     let time = 0;
     const interval = setInterval(() => {
       time += 1;
       setThinkingTime(time);
     }, 1000);
-  
+
+    return () => clearInterval(interval);
+  }, [currentTurn]);
+
+  async function playBotMove() {
+    // Khởi tạo controller mới mỗi lần gọi
+    const controller = new AbortController();
+    controllerRef.current = controller;
+
     try {
       const res = await fetch("http://localhost:8000/bot_move", {
         method: "POST",
         signal: controller.signal, // dùng tín hiệu để có thể hủy fetch
       });
-  
+
       const data = await res.json();
       if (data.success) {
         const convertedPieces = convertBackendPieces(data.state.pieces);
         setBoardState({ ...data.state, pieces: convertedPieces });
         moveSound.play();
-  
+
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
@@ -107,11 +111,8 @@ export default function Referee({
         console.error("Lỗi playBotMove:", err);
       }
     } finally {
-      clearInterval(interval);
-      setThinkingTime(null);
     }
   }
-  
 
   async function playMove(playedPiece, destination) {
     const from = playedPiece.position;
@@ -213,13 +214,13 @@ export default function Referee({
       console.error("Promotion error:", err);
     }
   }
-  
+
   async function restartGame() {
     try {
       // Hủy bot đang chạy
-    if (controllerRef.current) {
-      controllerRef.current.abort(); // Hủy bot nếu đang chạy
-    }
+      if (controllerRef.current) {
+        controllerRef.current.abort(); // Hủy bot nếu đang chạy
+      }
       const res = await fetch("http://localhost:8000/restart", {
         method: "POST",
       });

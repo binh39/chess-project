@@ -9,7 +9,6 @@ function App() {
   const [currentTurn, setCurrentTurn] = useState(null);
   const [isStart, setIsStart] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
-  const [resetTrigger, setResetTrigger] = useState(0);
   const [restart, setRestart] = useState(false);
 
   const startPlayerVsBot = () => {
@@ -35,9 +34,6 @@ function App() {
     setIsBotVsBot(false);
     setThinkingTime(null);
     setCurrentTurn(null);
-    
-    setResetTrigger((prev) => prev + 1);
-    
     setIsRestarting(false);
     setRestart(true);
   };
@@ -51,9 +47,8 @@ function App() {
           setCurrentTurn={setCurrentTurn}
           currentTurn={currentTurn}
           isRestarting={isRestarting}
-          resetTrigger={resetTrigger}
-          restart = {restart}
-          setRestart = {setRestart}
+          restart={restart}
+          setRestart={setRestart}
           isStart={isStart}
           setIsStart={setIsStart}
         />
@@ -66,7 +61,7 @@ function App() {
               : "Black thinking..."
             : "Welcome"}
           {thinkingTime !== null && (isBotVsBot || isPlayerVsBot)
-            ? thinkingTime
+            ? thinkingTime + "s"
             : null}
         </div>
         <button className="buttonBase buttonPlay" onClick={startBotVsBot}>
