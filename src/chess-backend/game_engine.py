@@ -3,16 +3,30 @@ import random
 import math
 import time
 from models import GameState, Piece
+from core.chess_base import ChessEnv  # Lớp môi trường cờ
+from core.model import ChessNet
+from training.utils import load_predict_model
+import torch
+import numpy as np
+from core.mcts import MCTS
 
 
-board = chess.Board()
+env = ChessEnv()
+env.reset()
+
+board = env.chess_board
 MAX_TIME = 2
-
+action_dim = 4864
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model = ChessNet()
+model = load_predict_model(r"model_checkpoint\best_model.pth", model)
+model.to(device)
+model.eval()
 
 def initialize_board():
     global board
-    
-    board = chess.Board()
+    state = env.reset()
+    board = env.chess_board
 
 # --- MCTS Implementation ---
 class MCTSNode:
@@ -158,33 +172,74 @@ def choose_best_promotion(from_square, to_square):
 
     return best_promotion
 
+# def bot_move():
+#     global board
+#     try:
+#         if board.is_game_over():
+#             print("Game over, no move to make")
+#             return False, None
+#         move = mcts_search(board, max_time=MAX_TIME)
+#         piece = board.piece_at(move.from_square)
+#         if piece is None:
+#             print(" Invalid move: from_square has no piece.")
+#             return False, None
+#         is_promotion = (
+#             piece.piece_type == chess.PAWN and
+#             ((piece.color == chess.WHITE and move.to_square // 8 == 7) or
+#              (piece.color == chess.BLACK and move.to_square // 8 == 0))
+#         )
+#         if is_promotion:
+#             promotion = choose_best_promotion(chess.square_name(move.from_square), chess.square_name(move.to_square))
+#             if promotion not in ['q', 'r', 'b', 'n']:
+#                 print(f"Invalid promotion {promotion}, defaulting to Queen")
+#                 promotion = 'q'
+#             move = chess.Move(move.from_square, move.to_square, promotion=chess.Piece.from_symbol(promotion.upper()))
+#         board.push(move)
+#         return True, move.uci()
+#     except Exception as e:
+#         print(f"Error in bot_move: {e}")
+#         raise
+
+move_count = 0
 def bot_move():
     global board
+    state = env._observation()
+    legal_moves = list(env.chess_board.legal_moves)
+    mcts = MCTS(
+        neural_net=model,
+        converter=env.chess_coords,
+        env=env,
+        simulations=50,  # Số lượt mô phỏng cho mỗi nước đi
+        max_depth=30,     # Độ sâu tối đa cho mỗi mô phỏng
+        device=device,
+        num_processes=8,  # Số process cho parallel search
+        use_model=True    # Sử dụng model để dự đoán nước đi
+    )
     try:
         if board.is_game_over():
             print("Game over, no move to make")
             return False, None
-        move = mcts_search(board, max_time=MAX_TIME)
-        piece = board.piece_at(move.from_square)
-        if piece is None:
-            print(" Invalid move: from_square has no piece.")
-            return False, None
-        is_promotion = (
-            piece.piece_type == chess.PAWN and
-            ((piece.color == chess.WHITE and move.to_square // 8 == 7) or
-             (piece.color == chess.BLACK and move.to_square // 8 == 0))
-        )
-        if is_promotion:
-            promotion = choose_best_promotion(chess.square_name(move.from_square), chess.square_name(move.to_square))
-            if promotion not in ['q', 'r', 'b', 'n']:
-                print(f"Invalid promotion {promotion}, defaulting to Queen")
-                promotion = 'q'
-            move = chess.Move(move.from_square, move.to_square, promotion=chess.Piece.from_symbol(promotion.upper()))
-        board.push(move)
-        return True, move.uci()
+        pi = mcts.run(env.chess_board)
+        # Chọn nước đi dựa trên policy từ MCTS
+        env._update_legal_actions()
+        valid_moves = env.legal_actions
+        pi_valid = pi * valid_moves
+        
+        if np.sum(pi_valid) > 0:
+            
+            action = np.argmax(pi_valid)
+        else:
+            action = np.random.choice(np.where(valid_moves)[0])
+
+        # Thực hiện nước đi
+        move_uci = env.chess_coords.index_to_move(action)
+        
+        env.step(action)
+        return True, move_uci.uci()
     except Exception as e:
         print(f"Error in bot_move: {e}")
         raise
+
 
 # --- Game ---
 def get_game_state():
@@ -228,7 +283,8 @@ def promote_pawn(from_square, to_square, piece_type):
         return False
 
     # Thực hiện di chuyển quân tốt
-    board.push(move)
+    action = env.chess_coords.move_to_index(move)
+    env.step(action)
 
     # Kiểm tra xem quân tốt có đến hàng cuối không:
     # - Quân trắng phong hậu nếu đến hàng 8 (rank index = 7)
@@ -266,7 +322,8 @@ def make_move(from_square, to_square, piece_type=None):
         else:
             move = chess.Move.from_uci(from_square + to_square)
             if move in board.legal_moves:
-                board.push(move)
+                action = env.chess_coords.move_to_index(move)
+                env.step(action)
                 return True
             else:
                 print(from_square + to_square)

@@ -275,7 +275,9 @@ export default function Referee({
               The winning team is{" "}
               {boardState.turn === "white" ? "black" : "white"}!
             </span>
-            <button onClick={restartGame}>Play again</button>
+            <button onClick={restartGame}>
+            Play again
+            </button>
           </div>
         </div>
       </div>
