@@ -1,0 +1,600 @@
+2025-04-30 10:00:05,892@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:07,202@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:07,604@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:07,607@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:07,607@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:07,607@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:15,935@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:17,156@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:17,448@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:17,448@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:17,448@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:17,448@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:20,892@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:22,178@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:22,472@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:22,473@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:22,473@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:22,473@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:25,959@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:27,315@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:27,584@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:27,584@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:27,584@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:27,584@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:30,989@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:32,480@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:32,818@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:32,818@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:32,819@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:32,819@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:40,963@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:42,358@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:42,677@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:42,685@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:42,685@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:42,685@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:51,043@chess_zero.manager INFO # config type: mini
+2025-04-30 10:00:52,437@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:00:52,722@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:52,722@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:00:52,722@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:00:52,722@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:01,049@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:02,467@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:02,798@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:02,799@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:02,799@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:02,799@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:11,073@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:12,485@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:12,836@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:12,836@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:12,836@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:12,836@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:21,064@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:22,360@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:22,637@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:22,637@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:22,637@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:22,637@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:26,134@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:27,371@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:27,706@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:27,706@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:27,706@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:27,706@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:31,108@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:32,374@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:32,718@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:32,718@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:32,718@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:32,718@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:41,224@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:42,568@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:42,877@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:42,877@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:42,877@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:42,877@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:51,136@chess_zero.manager INFO # config type: mini
+2025-04-30 10:01:52,436@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:01:52,773@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:52,779@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:01:52,779@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:01:52,780@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:02:01,185@chess_zero.manager INFO # config type: mini
+2025-04-30 10:02:02,523@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:02:02,883@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:02:02,883@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:02:02,883@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:02:02,883@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:02:11,164@chess_zero.manager INFO # config type: mini
+2025-04-30 10:02:12,518@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:02:12,834@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:02:12,838@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:02:12,838@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:02:12,839@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:36,480@chess_zero.manager INFO # config type: mini
+2025-04-30 10:21:37,870@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:21:38,211@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:38,212@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:38,212@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:38,213@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:46,527@chess_zero.manager INFO # config type: mini
+2025-04-30 10:21:47,761@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:21:48,029@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:48,029@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:48,029@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:48,029@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:51,427@chess_zero.manager INFO # config type: mini
+2025-04-30 10:21:52,743@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:21:53,039@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:53,040@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:53,040@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:53,040@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:56,470@chess_zero.manager INFO # config type: mini
+2025-04-30 10:21:57,748@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:21:58,011@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:58,011@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:21:58,011@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:21:58,020@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:01,466@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:02,713@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:03,018@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:03,023@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:03,024@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:03,024@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:06,485@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:07,666@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:07,927@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:07,927@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:07,927@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:07,927@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:11,484@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:12,715@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:13,005@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:13,005@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:13,005@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:13,005@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:16,514@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:17,759@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:18,021@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:18,021@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:18,021@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:18,021@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:21,532@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:22,710@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:23,024@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:23,025@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:23,025@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:23,026@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:26,502@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:27,709@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:28,006@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:28,006@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:28,006@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:28,006@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:31,563@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:32,761@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:33,066@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:33,066@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:33,066@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:33,071@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:36,586@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:38,147@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:38,593@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:38,593@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:38,593@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:38,593@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:46,666@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:48,508@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:48,913@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:48,913@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:48,913@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:48,913@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:56,616@chess_zero.manager INFO # config type: mini
+2025-04-30 10:22:57,835@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:22:58,120@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:58,120@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:22:58,120@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:22:58,120@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:23:01,677@chess_zero.manager INFO # config type: mini
+2025-04-30 10:23:02,816@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:23:03,098@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:23:03,098@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:23:03,098@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:23:03,098@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:23:06,639@chess_zero.manager INFO # config type: mini
+2025-04-30 10:23:07,898@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:23:08,206@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:23:08,206@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:23:08,210@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:23:08,210@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:31,376@chess_zero.manager INFO # config type: mini
+2025-04-30 10:24:32,549@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:24:32,831@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:32,831@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:32,831@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:32,831@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:36,444@chess_zero.manager INFO # config type: mini
+2025-04-30 10:24:37,663@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:24:37,948@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:37,948@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:37,948@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:37,948@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:41,368@chess_zero.manager INFO # config type: mini
+2025-04-30 10:24:42,559@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:24:42,825@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:42,825@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:42,825@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:42,825@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:46,399@chess_zero.manager INFO # config type: mini
+2025-04-30 10:24:47,620@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:24:47,974@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:47,975@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:47,975@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:47,975@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:51,369@chess_zero.manager INFO # config type: mini
+2025-04-30 10:24:52,609@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:24:52,886@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:52,901@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:52,901@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:52,901@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:56,416@chess_zero.manager INFO # config type: mini
+2025-04-30 10:24:57,619@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:24:57,912@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:57,912@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:24:57,912@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:24:57,912@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:01,472@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:02,698@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:03,009@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:03,009@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:03,009@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:03,013@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:06,499@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:07,658@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:07,923@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:07,923@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:07,923@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:07,923@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:11,492@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:12,707@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:13,014@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:13,014@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:13,014@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:13,014@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:16,542@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:17,688@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:18,002@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:18,002@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:18,002@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:18,007@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:21,559@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:22,734@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:23,024@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:23,040@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:23,040@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:23,040@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:26,553@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:27,773@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:28,069@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:28,069@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:28,069@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:28,071@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:31,591@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:32,773@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:33,055@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:33,055@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:33,055@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:33,061@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:36,603@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:37,818@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:38,111@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:38,111@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:38,111@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:38,111@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:41,633@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:42,881@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:43,178@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:43,178@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:43,178@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:43,178@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:46,614@chess_zero.manager INFO # config type: mini
+2025-04-30 10:25:47,810@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:25:48,080@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:48,081@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:25:48,081@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:25:48,081@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:06,312@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:07,597@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:07,927@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:07,928@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:07,928@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:07,928@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:11,337@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:12,519@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:12,802@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:12,802@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:12,802@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:12,802@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:16,379@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:17,841@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:18,144@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:18,144@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:18,144@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:18,144@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:26,468@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:27,736@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:28,094@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:28,094@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:28,095@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:28,095@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:36,412@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:37,698@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:38,014@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:38,014@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:38,015@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:38,016@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:46,428@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:47,810@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:48,192@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:48,192@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:48,197@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:48,198@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:56,456@chess_zero.manager INFO # config type: mini
+2025-04-30 10:31:57,792@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:31:58,108@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:58,109@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:31:58,109@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:31:58,109@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:06,513@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:07,644@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:07,914@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:07,914@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:07,914@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:07,914@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:11,519@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:12,814@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:13,095@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:13,095@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:13,095@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:13,095@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:16,531@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:17,979@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:18,297@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:18,297@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:18,297@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:18,297@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:26,586@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:27,738@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:28,004@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:28,004@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:28,004@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:28,004@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:31,578@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:32,743@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:33,015@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:33,015@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:33,015@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:33,015@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:36,591@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:37,879@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:38,185@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:38,185@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:38,185@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:38,185@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:46,663@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:47,948@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:48,284@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:48,284@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:48,287@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:48,287@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:56,626@chess_zero.manager INFO # config type: mini
+2025-04-30 10:32:58,108@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:32:58,408@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:58,408@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:32:58,408@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:32:58,408@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:33:06,718@chess_zero.manager INFO # config type: mini
+2025-04-30 10:33:08,018@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:33:08,298@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:33:08,298@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:33:08,298@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:33:08,298@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:33:52,034@chess_zero.manager INFO # config type: mini
+2025-04-30 10:33:53,286@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:33:53,577@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:33:53,577@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:33:53,577@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:33:53,577@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:33:57,076@chess_zero.manager INFO # config type: mini
+2025-04-30 10:33:58,298@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:33:58,581@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:33:58,581@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:33:58,581@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:33:58,581@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:02,058@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:03,412@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:03,713@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:03,713@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:03,713@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:03,713@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:12,103@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:13,380@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:13,664@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:13,664@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:13,664@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:13,664@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:17,127@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:18,456@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:18,753@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:18,753@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:18,753@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:18,753@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:22,112@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:23,303@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:23,582@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:23,582@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:23,582@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:23,582@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:27,144@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:28,352@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:28,627@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:28,627@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:28,627@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:28,627@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:32,168@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:33,477@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:33,802@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:33,802@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:33,802@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:33,802@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:42,162@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:43,368@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:43,650@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:43,650@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:43,650@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:43,650@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:47,221@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:48,422@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:48,688@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:48,688@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:48,688@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:48,688@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:52,220@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:53,391@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:53,687@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:53,687@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:53,687@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:53,687@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:57,275@chess_zero.manager INFO # config type: mini
+2025-04-30 10:34:58,492@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:34:58,797@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:58,797@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:34:58,797@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:34:58,797@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:35:02,269@chess_zero.manager INFO # config type: mini
+2025-04-30 10:35:03,618@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 10:35:03,915@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:35:03,915@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:35:03,915@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 10:35:03,915@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 10:35:06,836@chess_zero.agent.model_chess DEBUG # loading model from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\model_best_config.json
+2025-04-30 10:35:08,410@h5py._conv DEBUG # Creating converter from 3 to 5
+2025-04-30 10:35:08,688@chess_zero.agent.model_chess DEBUG # loaded model digest = 259dc1c022276e4d6d2c7faa7b037a20ccac4b4a039cce14548ed47b45894b78
+2025-04-30 11:11:17,524@chess_zero.worker.self_play INFO # save play data to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\play_data\play_20250430-111117.524673.json
+2025-04-30 11:11:17,524@chess_zero.lib.model_helper DEBUG # start reload the best model if changed
+2025-04-30 11:11:17,664@chess_zero.lib.model_helper DEBUG # the best model is not changed
+2025-04-30 11:35:53,428@chess_zero.manager INFO # config type: mini
+2025-04-30 11:35:54,766@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 11:35:55,033@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 11:35:55,033@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 11:35:55,033@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 11:35:55,033@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 11:35:57,472@chess_zero.agent.model_chess DEBUG # loading model from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\model_best_config.json
+2025-04-30 11:36:00,430@h5py._conv DEBUG # Creating converter from 3 to 5
+2025-04-30 11:36:00,680@chess_zero.agent.model_chess DEBUG # loaded model digest = 259dc1c022276e4d6d2c7faa7b037a20ccac4b4a039cce14548ed47b45894b78
+2025-04-30 12:49:26,638@chess_zero.worker.self_play INFO # save play data to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\play_data\play_20250430-124926.638690.json
+2025-04-30 12:49:26,680@chess_zero.lib.model_helper DEBUG # start reload the best model if changed
+2025-04-30 12:49:26,836@chess_zero.lib.model_helper DEBUG # the best model is not changed
+2025-04-30 12:55:12,375@chess_zero.manager INFO # config type: mini
+2025-04-30 12:55:13,909@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 12:55:14,226@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 12:55:14,226@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 12:55:14,226@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 12:55:14,226@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 12:55:17,575@chess_zero.worker.optimize DEBUG # loading best model
+2025-04-30 12:55:17,575@chess_zero.agent.model_chess DEBUG # loading model from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\model_best_config.json
+2025-04-30 12:55:20,590@h5py._conv DEBUG # Creating converter from 3 to 5
+2025-04-30 12:55:20,848@chess_zero.agent.model_chess DEBUG # loaded model digest = 259dc1c022276e4d6d2c7faa7b037a20ccac4b4a039cce14548ed47b45894b78
+2025-04-30 12:55:20,890@chess_zero.worker.optimize DEBUG # loading data from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\play_data\play_20250430-111117.524673.json
+2025-04-30 12:55:20,914@chess_zero.worker.optimize DEBUG # loading data from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\play_data\play_20250430-124926.638690.json
+2025-04-30 12:55:30,279@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 12:55:58,459@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-125558.449947\model_config.json
+2025-04-30 12:55:58,528@h5py._conv DEBUG # Creating converter from 5 to 3
+2025-04-30 12:55:58,876@chess_zero.agent.model_chess DEBUG # saved model digest c1bd4916b24e7a3d053d464715c37a2fa7e5f283f7dcf4b2b94af780f5011d4c
+2025-04-30 12:55:58,915@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 13:13:08,812@chess_zero.manager INFO # config type: mini
+2025-04-30 13:13:10,185@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 13:13:10,543@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 13:13:10,543@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 13:13:10,543@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 13:13:10,543@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 13:13:13,877@chess_zero.worker.optimize DEBUG # loading latest model
+2025-04-30 13:13:13,877@chess_zero.agent.model_chess DEBUG # loading model from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-125558.449947\model_config.json
+2025-04-30 13:13:16,980@h5py._conv DEBUG # Creating converter from 3 to 5
+2025-04-30 13:13:17,290@chess_zero.agent.model_chess DEBUG # loaded model digest = c1bd4916b24e7a3d053d464715c37a2fa7e5f283f7dcf4b2b94af780f5011d4c
+2025-04-30 13:13:17,310@chess_zero.worker.optimize DEBUG # loading data from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\play_data\play_20250430-111117.524673.json
+2025-04-30 13:13:17,340@chess_zero.worker.optimize DEBUG # loading data from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\play_data\play_20250430-124926.638690.json
+2025-04-30 13:13:26,532@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 13:13:51,363@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-131351.361147\model_config.json
+2025-04-30 13:13:51,422@h5py._conv DEBUG # Creating converter from 5 to 3
+2025-04-30 13:13:51,684@chess_zero.agent.model_chess DEBUG # saved model digest 6af0aac0f2a7c26d3a2d349328a54bb016d81f75b4d91cafbd59f2314394cb7d
+2025-04-30 13:13:51,712@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:13:15,300@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141315.300310\model_config.json
+2025-04-30 14:13:16,409@chess_zero.agent.model_chess DEBUG # saved model digest cca62c9349916edbce2cd1e4a9ee7da0a41e80e7f11c97287c34b4347575b3bf
+2025-04-30 14:13:16,612@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:13:24,234@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141324.234546\model_config.json
+2025-04-30 14:13:24,659@chess_zero.agent.model_chess DEBUG # saved model digest ba133d4d22137c0a9a2444e608684b3e8f8586e8718bd7d559ce802b2fda27af
+2025-04-30 14:13:24,695@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:13:32,113@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141332.113759\model_config.json
+2025-04-30 14:13:32,455@chess_zero.agent.model_chess DEBUG # saved model digest 2cf143ccb14900e5ccc290df2180f16820f61a225aeb920309f9cc3ab7a823e2
+2025-04-30 14:13:32,495@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:13:40,018@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141340.017113\model_config.json
+2025-04-30 14:13:40,355@chess_zero.agent.model_chess DEBUG # saved model digest 6bdbbb039ec9f36c51b6e3150901d853722978697a1ae26073b45c96bce8b586
+2025-04-30 14:13:40,395@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:13:48,032@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141348.032731\model_config.json
+2025-04-30 14:13:48,385@chess_zero.agent.model_chess DEBUG # saved model digest 28b023f03817ede38adc08dfeb3eb29968fe39c2b7cac3b9f484146085f24e9a
+2025-04-30 14:13:48,426@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:13:56,053@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141356.053519\model_config.json
+2025-04-30 14:13:56,483@chess_zero.agent.model_chess DEBUG # saved model digest 532febec72220ed257746df04a19e422922c0411f4dd6242842c150629526786
+2025-04-30 14:13:56,518@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:04,098@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141404.098006\model_config.json
+2025-04-30 14:14:04,512@chess_zero.agent.model_chess DEBUG # saved model digest 29bdcd10d24ae9942557a7d86b821a78ff249ae17d760e4a5fc2fd56072f2a61
+2025-04-30 14:14:04,550@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:11,884@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141411.882643\model_config.json
+2025-04-30 14:14:12,219@chess_zero.agent.model_chess DEBUG # saved model digest c256b9ddfadd81bd0a9ec30783259176acd15b30c4557029c3811d35bb74a379
+2025-04-30 14:14:12,250@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:19,466@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141419.466949\model_config.json
+2025-04-30 14:14:19,808@chess_zero.agent.model_chess DEBUG # saved model digest 47bb6e7a0c29f5d29bdd883cae5c68aca821def144f3635c7426f12b9081a3fa
+2025-04-30 14:14:19,849@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:27,227@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141427.226523\model_config.json
+2025-04-30 14:14:27,573@chess_zero.agent.model_chess DEBUG # saved model digest deda5c40745cee7b8345b04a63e194031cfc08529d08c201064e1270a8520892
+2025-04-30 14:14:27,612@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:35,137@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141435.137135\model_config.json
+2025-04-30 14:14:35,486@chess_zero.agent.model_chess DEBUG # saved model digest 36150a59a85d520acd4112f99425b3f851d187a9f2e2e937dd28db7399feef13
+2025-04-30 14:14:35,529@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:42,945@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141442.945193\model_config.json
+2025-04-30 14:14:43,313@chess_zero.agent.model_chess DEBUG # saved model digest ee5ff1a91e11fa0fa2a535599f4436ef61b6b506509e54f7f6b0fbca1f6e9f87
+2025-04-30 14:14:43,350@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:50,617@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141450.617225\model_config.json
+2025-04-30 14:14:50,948@chess_zero.agent.model_chess DEBUG # saved model digest ef568dbce27c4578502d2fd351630dde1df03bee929e5f9ab757e3b8be2555ef
+2025-04-30 14:14:50,988@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:14:58,322@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141458.312418\model_config.json
+2025-04-30 14:14:58,661@chess_zero.agent.model_chess DEBUG # saved model digest 651f6d1fe82abdbcd8b0542e3403149f6d152d448d4ff05860eaea3afe23ef31
+2025-04-30 14:14:58,704@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:06,116@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141506.114881\model_config.json
+2025-04-30 14:15:06,499@chess_zero.agent.model_chess DEBUG # saved model digest dca89d318fbe6b705c8b2626efabcad5c6592987711d2c60cea1393efc4a4791
+2025-04-30 14:15:06,541@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:13,858@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141513.858960\model_config.json
+2025-04-30 14:15:14,208@chess_zero.agent.model_chess DEBUG # saved model digest d167352c69d208ca8abf0da7c07e2e324bacf696a07c86d279aa8d977c3344d1
+2025-04-30 14:15:14,238@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:21,684@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141521.683671\model_config.json
+2025-04-30 14:15:22,061@chess_zero.agent.model_chess DEBUG # saved model digest 497745344c4866d82e73a2ed3c18973a046cd473b4140886ee52b4276f9086b9
+2025-04-30 14:15:22,091@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:29,477@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141529.475802\model_config.json
+2025-04-30 14:15:29,814@chess_zero.agent.model_chess DEBUG # saved model digest ae9393a5431aeae46e60a0edf672f1072f112436e96f44676cecf2798ac09e52
+2025-04-30 14:15:29,852@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:37,289@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141537.287195\model_config.json
+2025-04-30 14:15:37,627@chess_zero.agent.model_chess DEBUG # saved model digest 7bdce1b9198e2f55f8da595319de733c999d6d4e78ecc29ff34648dd0ea13d48
+2025-04-30 14:15:37,666@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:45,097@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141545.096117\model_config.json
+2025-04-30 14:15:45,447@chess_zero.agent.model_chess DEBUG # saved model digest c858312c0116f146f3d057d7bafbddb13a76d5d4de73e38b928f79eeb1622a8e
+2025-04-30 14:15:45,480@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:15:52,515@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141552.505922\model_config.json
+2025-04-30 14:15:52,855@chess_zero.agent.model_chess DEBUG # saved model digest 3156cda17bfc8d32cc05f10620593c455e1f2250c3d0c96cec16b05fc35c4fd6
+2025-04-30 14:15:52,885@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:16:00,142@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141600.133386\model_config.json
+2025-04-30 14:16:00,475@chess_zero.agent.model_chess DEBUG # saved model digest 845236ef1e33a0ff1d732c0ea371e95d6db8a17500fd53144919a4d6cf6757ef
+2025-04-30 14:16:00,515@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:16:07,941@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141607.941046\model_config.json
+2025-04-30 14:16:08,343@chess_zero.agent.model_chess DEBUG # saved model digest b28a067459a34cd851c9f7c7f2b998b1de5bba5eef118de8838405278becb575
+2025-04-30 14:16:08,375@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:16:15,733@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141615.732121\model_config.json
+2025-04-30 14:16:16,046@chess_zero.agent.model_chess DEBUG # saved model digest 03ae99323a5e536b51943fb2f8de0969238dbf3d216e13a1adfc886ea1bc032a
+2025-04-30 14:16:16,076@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:16:23,685@chess_zero.agent.model_chess DEBUG # save model to D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141623.685244\model_config.json
+2025-04-30 14:16:24,080@chess_zero.agent.model_chess DEBUG # saved model digest 7589005dc375f555bb9473a5ceeb44782eedf96644a8c65bf4f122b85d61aa70
+2025-04-30 14:16:24,121@tensorflow WARNING # `batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+2025-04-30 14:16:56,138@chess_zero.manager INFO # config type: mini
+2025-04-30 14:17:03,205@tensorflow DEBUG # Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2025-04-30 14:17:05,077@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 14:17:05,077@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 14:17:05,077@h5py._conv DEBUG # Creating converter from 7 to 5
+2025-04-30 14:17:05,077@h5py._conv DEBUG # Creating converter from 5 to 7
+2025-04-30 14:17:15,592@chess_zero.agent.model_chess DEBUG # loading model from D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\model_best_config.json
+2025-04-30 14:17:19,710@h5py._conv DEBUG # Creating converter from 3 to 5
+2025-04-30 14:17:19,958@chess_zero.agent.model_chess DEBUG # loaded model digest = 259dc1c022276e4d6d2c7faa7b037a20ccac4b4a039cce14548ed47b45894b78
+2025-04-30 14:17:20,187@chess_zero.agent.model_chess DEBUG # model files does not exist at D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141623.685244\model_config.json and D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141623.685244\model.weights.h5
+2025-04-30 14:17:20,187@chess_zero.worker.evaluate DEBUG # start evaluate model D:\Mon_Hoc\Ky_2_24-25\AI\Chess-alpha-zero\data\model\next_generation\model_20250430-141623.685244
