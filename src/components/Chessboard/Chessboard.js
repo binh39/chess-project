@@ -5,7 +5,7 @@ import Tile from "../Tile/Tile";
 import { VERTICAL_AXIS, HORIZONTAL_AXIS, GRID_SIZE } from "../../Constants";
 import { Position } from "../../models";
 
-export default function Chessboard({ playMove, pieces, isStart }) {
+export default function Chessboard({ playMove, pieces, isStart, lastMove }) {
   const [activePiece, setActivePiece] = useState(null);
   const [grabPosition, setGrabPosition] = useState(new Position(-1, -1));
   const chessboardRef = useRef(null);
@@ -71,6 +71,26 @@ export default function Chessboard({ playMove, pieces, isStart }) {
     }
   }
 
+  const highlightLastMove = (i, j) => {
+    if (lastMove) {
+      const from = lastMove.from;
+      const to = lastMove.to;
+  
+      // Chuyển đổi từ 'a1' thành (x, y)
+      const fromX = from.charCodeAt(0) - 97; // 'a' = 97
+      const fromY = parseInt(from[1]) - 1;
+  
+      // Chuyển đổi từ 'h8' thành (x, y)
+      const toX = to.charCodeAt(0) - 97;
+      const toY = parseInt(to[1]) - 1;
+  
+      // Kiểm tra xem (i, j) có phải là ô 'from' hoặc 'to' không
+      return (i === fromX && j === fromY) || (i === toX && j === toY);
+    }
+    return false;
+  };
+  
+
   const board = [];
 
   for (let j = VERTICAL_AXIS.length - 1; j >= 0; j--) {
@@ -90,14 +110,15 @@ export default function Chessboard({ playMove, pieces, isStart }) {
           )
         : false;
 
-      board.push(
-        React.createElement(Tile, {
-          key: `${j},${i}`,
-          image: image,
-          number: number,
-          highlight: highlight,
-        })
-      );
+        board.push(
+          <Tile
+            key={`${j},${i}`}
+            image={image}
+            number={number}
+            highlight={highlight} 
+            highlightLastMove={highlightLastMove(i, j)}
+          />
+        );
     }
   }
 

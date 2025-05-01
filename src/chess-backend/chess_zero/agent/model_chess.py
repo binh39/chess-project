@@ -59,7 +59,7 @@ class ChessModel:
         Builds the full Keras model and stores it in self.model.
         """
         mc = self.config.model
-        in_x = x = Input((18, 8, 8))
+        in_x = x = Input(shape=(18, 8, 8))
 
         # (batch, channels, height, width)
         x = Conv2D(filters=mc.cnn_filter_num, kernel_size=mc.cnn_first_filter_size, padding="same",
@@ -141,9 +141,9 @@ class ChessModel:
                 pass
         if os.path.exists(config_path) and os.path.exists(weight_path):
             logger.debug(f"loading model from {config_path}")
-            with open(config_path, "rt") as f:
-                self.model = Model.from_config(json.load(f))
-            self.model.load_weights(weight_path)
+            # with open(config_path, "rt") as f:
+            #     self.model = Model.from_config(json.load(f))
+            self.model.load_weights(weight_path, by_name=True)
             self.digest = self.fetch_digest(weight_path)
             logger.debug(f"loaded model digest = {self.digest}")
             return True

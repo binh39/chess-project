@@ -51,3 +51,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
+.tile-highlight-last-move {
+  background-color: aqua;
+}

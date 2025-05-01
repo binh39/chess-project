@@ -20,6 +20,8 @@ me_player = None
 env = ChessEnv().reset()
 with tf.device('/GPU:0'):
     model = ChessModel(default_config)
+    model.build()
+    model.model.summary()
     if not load_best_model_weight(model):
         raise RuntimeError("Best model not found!")
 

@@ -19,6 +19,8 @@ export default function Referee({
   isStart,
   setIsStart,
 }) {
+  const [lastMove, setLastMove] = useState(null);
+
   const [boardState, setBoardState] = useState(null);
   const [promotionData, setPromotionData] = useState(null);
   const modalRef = useRef(null);
@@ -99,6 +101,10 @@ export default function Referee({
         setBoardState({ ...data.state, pieces: convertedPieces });
         moveSound.play();
 
+        const fromSquare = data.move.substring(0, 2); 
+        const toSquare = data.move.substring(2, 4); 
+        setLastMove({ from: fromSquare, to: toSquare });
+
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
@@ -138,6 +144,8 @@ export default function Referee({
       return;
     }
 
+    const move = { from: from_square, to: to_square };
+    setLastMove(move);
     // Di chuyển bình thường
     await sendMove(from_square, to_square);
   }
@@ -286,6 +294,7 @@ export default function Referee({
         playMove={playMove}
         pieces={boardState.pieces}
         isStart={isStart}
+        lastMove={lastMove}
       />
     </>
   );
