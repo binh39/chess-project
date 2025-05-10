@@ -1,7 +1,14 @@
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '0'  # Hiển thị tất cả log
-import tensorflow as tf
-print(tf.__version__)
-print("CUDA Available:", tf.test.is_built_with_cuda())
-print("GPU Devices:", tf.config.list_physical_devices('GPU'))
-tf.debugging.set_log_device_placement(True)  # Hiển thị thiết bị thực thi
+import chess
+
+board = chess.Board()
+
+# Lặp đi lặp lại chuỗi các nước đi để tái hiện vị trí giống nhau
+moves = ["Nf3", "Nf6", "Ng1", "Ng8"]  # Mã nhảy ra rồi quay lại
+
+for _ in range(6):  # Lặp lại chuỗi 3 lần
+    for move in moves:
+        board.push_san(move)
+        print(board)
+
+print(board)
+print("Is draw by threefold repetition?", board.can_claim_threefold_repetition())

@@ -46,8 +46,8 @@ class ResourceConfig:
         self.data_dir = os.environ.get("DATA_DIR", _data_dir())
 
         self.model_dir = os.environ.get("MODEL_DIR", os.path.join(self.data_dir, "model"))
-        self.model_best_config_path = os.path.join(self.model_dir, "model_best_config.json")
-        self.model_best_weight_path = os.path.join(self.model_dir, "model_best.weights.h5")
+        self.model_best_config_path = os.path.join(self.model_dir, "model_config.json")
+        self.model_best_weight_path = os.path.join(self.model_dir, "model.weights.h5")
 
         self.model_best_distributed_ftp_server = "alpha-chess-zero.mygamesonline.org"
         self.model_best_distributed_ftp_user = "2537576_chess"

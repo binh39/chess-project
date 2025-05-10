@@ -296,6 +296,8 @@ class ChessPlayer:
                 best_s = b
                 best_a = action
 
+        if best_a not in env.board.legal_moves:
+            print(f"INVALID MOVE SELECTED: {best_a} not in legal_moves: {[m.uci() for m in env.board.legal_moves]}")
         return best_a
 
     def apply_temperature(self, policy, turn):
@@ -326,10 +328,32 @@ class ChessPlayer:
         state = state_key(env)
         my_visitstats = self.tree[state]
         policy = np.zeros(self.labels_n)
+
+        # Chỉ xem xét các nước đi hợp lệ trong trạng thái hiện tại
+        legal_moves = list(env.board.legal_moves)
+
         for action, a_s in my_visitstats.a.items():
             policy[self.move_lookup[action]] = a_s.n
 
-        policy /= np.sum(policy)
+        # Tránh chia cho 0 khi chuẩn hóa policy
+        sum_policy = np.sum(policy)
+        if sum_policy > 0:
+            policy /= sum_policy
+        else:
+            # Nếu không có nước đi hợp lệ nào được thăm, tạo phân phối đều trên tất cả các nước đi hợp lệ
+            for move in legal_moves:
+                try:
+                    policy[self.move_lookup[move]] = 1.0
+                except KeyError:
+                    continue
+            
+            sum_policy = np.sum(policy)
+            if sum_policy > 0:  # Kiểm tra lại sau khi thêm nước đi hợp lệ
+                policy /= sum_policy
+            else:
+                # Nếu vẫn không có nước đi hợp lệ nào, đây có thể là trạng thái kết thúc game
+                logger.warning(f"Không tìm thấy nước đi hợp lệ nào cho trạng thái: {state}")
+    
         return policy
 
     def sl_action(self, observation, my_action, weight=1):

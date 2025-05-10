@@ -225,6 +225,7 @@ export default function Referee({
 
   async function restartGame() {
     try {
+      setLastMove(null);
       // Hủy bot đang chạy
       if (controllerRef.current) {
         controllerRef.current.abort(); // Hủy bot nếu đang chạy

@@ -3,6 +3,8 @@ import random
 import math
 import time
 from models import GameState, Piece
+import chess.engine
+
 
 import numpy as np
 import tensorflow as tf
@@ -13,15 +15,32 @@ from chess_zero.config import Config, PlayWithHumanConfig
 from chess_zero.env.chess_env import ChessEnv
 from chess_zero.agent.model_chess import ChessModel
 from chess_zero.lib.model_helper import load_best_model_weight
+from chess_zero.agent.player_chess import ChessPlayer
+from chess_zero.config import Config, PlayWithHumanConfig
+from chess_zero.env.chess_env import ChessEnv
+from chess_zero.agent.model_chess import ChessModel
+from chess_zero.lib.model_helper import load_best_model_weight
+from chess_zero.config import ResourceConfig
 
-default_config = Config()
+src = ResourceConfig()
+model_weight = src.model_best_weight_path
+
+default_config = Config("normal")
 PlayWithHumanConfig().update_play_config(default_config.play)
 me_player = None
 env = ChessEnv().reset()
+
+
 with tf.device('/GPU:0'):
     model = ChessModel(default_config)
     model.build()
     model.model.summary()
+    if not load_best_model_weight(model):
+        raise RuntimeError("Best model not found!")
+    
+    import h5py
+    with h5py.File(model_weight, 'r') as f:
+        print(list(f.keys()))  # Kiểm tra các nhóm trong file
     if not load_best_model_weight(model):
         raise RuntimeError("Best model not found!")
 
@@ -213,15 +232,48 @@ def choose_best_promotion(from_square, to_square):
 #     except Exception as e:
 #         print(f"Error in bot_move: {e}")
 #         raise
-
+import asyncio
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+mcts_color = chess.WHITE
+engine_path = r"D:\App Install\stockfish-windows-x86-64-avx2\stockfish\stockfish-windows-x86-64-avx2.exe"
+from stockfish_engine import StockfishEngine
 move_count = 0
+engine = chess.engine.SimpleEngine.popen_uci(engine_path)
+engine.start()
 def bot_move():
     global board
     global me_player
+    global engine_path
+    global engine
     if not me_player:
         me_player = get_player(default_config)
-    action = me_player.action(env, False)
-    env.step(action)
+
+    if board.turn == mcts_color:
+        # MCTS chọn nước đi
+        if not me_player:
+            me_player = get_player(default_config)
+        try:
+            action = me_player.action(env, False)
+            print(action)
+            env.step(action)
+        except (chess.IllegalMoveError, ValueError) as e:
+            print("Phát hiện hòa cờ hoặc nước đi không hợp lệ:", e)
+            env.board.clear_stack()  # nếu cần xóa stack để tránh lỗi tiếp
+            env._done = True
+            env._winner = 0 #Hòa
+            
+        print("MCTS chọn:", action)
+    else:
+        # Stockfish chọn nước đi
+        engine.configure({
+                "UCI_LimitStrength": True,  # Bật giới hạn sức mạnh
+                "UCI_Elo": 2600             # Chỉnh mức ELO (mặc định Stockfish mạnh hơn 3200)
+            })
+        result = engine.play(board, chess.engine.Limit(time=5))
+        action = result.move.uci()
+        env.step(action)
+        print("Stockfish chọn:", action)
     return True, action
 
 

@@ -28,7 +28,7 @@ class PlayDataConfig:
 
 class PlayConfig:
     def __init__(self):
-        self.max_processes = 3
+        self.max_processes = 10
         self.search_threads = 16
         self.vram_frac = 1.0
         self.simulation_num_per_move = 800
@@ -60,7 +60,7 @@ class TrainerConfig:
 
 class ModelConfig:
     cnn_filter_num = 256
-    cnn_first_filter_size = 5
+    cnn_first_filter_size = 3
     cnn_filter_size = 3
     res_layer_num = 7
     l2_reg = 1e-4
