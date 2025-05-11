@@ -12,6 +12,7 @@ Xây dựng một AI cờ vua có thể:
 - Đạt trình độ cao bằng chiến lược tìm kiếm nước đi thông minh và mạng neural mạnh mẽ.
 - Điều chỉnh tham số động theo tiến trình trận đấu (số mô phỏng, virtual loss, nhiệt độ, ...).
 - Hỗ trợ kiểm tra, đánh giá mô hình và so sánh các phiên bản.
+
 ---
 
 ## 🧠 Cấu Trúc Chính
@@ -81,6 +82,8 @@ Xây dựng một AI cờ vua có thể:
 ### 5. Lặp lại quy trình:
 
 Self-Play → Training → Evaluation → (loop)
+
+---
 
 ## 🖥️ Giao Diện Người Dùng
 ### 🎮 Chế độ chơi
