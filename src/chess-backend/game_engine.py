@@ -366,3 +366,43 @@ def calculate_valid_moves(square: str):
             valid_moves.append(chess.square_name(move.to_square))
 
     return valid_moves
+
+import concurrent.futures
+stockfish_path = r"D:\ADMIN\Documents\Code\ChessProject\chess-project\src\chess-backend\stockfish17.exe"
+
+def create_chuppy():
+    engine = chess.engine.SimpleEngine.popen_uci(stockfish_path)
+    engine.configure({
+        "UCI_LimitStrength": True,
+        "UCI_Elo": 1500
+    })
+    return engine
+import traceback
+from stockfish import Stockfish
+
+def stock_fish_move():
+    global board
+    try:
+        stockfish = Stockfish(path=stockfish_path)
+        stockfish.update_engine_parameters({
+        "UCI_LimitStrength": True,
+        "UCI_Elo": 2500
+    })
+        stockfish.set_fen_position(board.fen())
+        action = stockfish.get_best_move()
+
+        try:
+            print(action)
+            env.step(action)
+        except (chess.IllegalMoveError, ValueError) as e:
+            print("Phát hiện hòa cờ hoặc nước đi không hợp lệ:", e)
+            env.board.clear_stack()  # nếu cần xóa stack để tránh lỗi tiếp
+            env._done = True
+            env._winner = 0 #Hòa
+            return False, action
+
+        return True, action
+    except Exception as e:
+        traceback.print_exc()
+        return False, None
+

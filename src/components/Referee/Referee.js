@@ -56,7 +56,11 @@ export default function Referee({
       setCurrentTurn(boardState.turn);
       // Nếu là chế độ Bot VS Bot, bot tự động chơi cho cả hai bên
       if (isBotVsBot && !boardState.is_checkmate) {
-        playBotMove();
+        if (boardState.turn === "black") {
+          playStockFishMove();
+        } else {
+          playBotMove();
+        }
       }
       // Nếu là chế độ Player VS Bot và đến lượt bot (đen)
       else if (
@@ -86,6 +90,44 @@ export default function Referee({
     return () => clearInterval(interval);
   }, [currentTurn]);
 
+  async function playStockFishMove() {
+    // Khởi tạo controller mới mỗi lần gọi
+    const controller = new AbortController();
+    controllerRef.current = controller;
+
+    try {
+      const res = await fetch("http://localhost:8000/stockfish_move", {
+        method: "POST",
+        signal: controller.signal, // dùng tín hiệu để có thể hủy fetch
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        const convertedPieces = convertBackendPieces(data.state.pieces);
+        setBoardState({ ...data.state, pieces: convertedPieces });
+        moveSound.play();
+
+        const fromSquare = data.move.substring(0, 2);
+        const toSquare = data.move.substring(2, 4);
+        setLastMove({ from: fromSquare, to: toSquare });
+
+        if (data.state.is_checkmate) {
+          checkmateModalRef.current?.classList.remove("hidden");
+          checkmateSound.play();
+        } else if (data.state.is_draw) {
+          drawModalRef.current?.classList.remove("hidden");
+        }
+      }
+    } catch (err) {
+      if (err.name === "AbortError") {
+        console.log("Bot move bị huỷ do restart.");
+      } else {
+        console.error("Lỗi playBotMove:", err);
+      }
+    } finally {
+    }
+  }
+
   async function playBotMove() {
     // Khởi tạo controller mới mỗi lần gọi
     const controller = new AbortController();
@@ -103,14 +145,14 @@ export default function Referee({
         setBoardState({ ...data.state, pieces: convertedPieces });
         moveSound.play();
 
-        const fromSquare = data.move.substring(0, 2); 
-        const toSquare = data.move.substring(2, 4); 
+        const fromSquare = data.move.substring(0, 2);
+        const toSquare = data.move.substring(2, 4);
         setLastMove({ from: fromSquare, to: toSquare });
 
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
-        } else if(data.state.is_draw) {
+        } else if (data.state.is_draw) {
           drawModalRef.current?.classList.remove("hidden");
         }
       }
@@ -178,9 +220,9 @@ export default function Referee({
       if (data.state.is_checkmate) {
         checkmateModalRef.current?.classList.remove("hidden");
         checkmateSound.play();
-      } else if(data.state.is_draw) {
-          drawModalRef.current?.classList.remove("hidden");
-        }
+      } else if (data.state.is_draw) {
+        drawModalRef.current?.classList.remove("hidden");
+      }
     }
   }
 
@@ -220,7 +262,7 @@ export default function Referee({
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
-        } else if(data.state.is_draw) {
+        } else if (data.state.is_draw) {
           drawModalRef.current?.classList.remove("hidden");
         }
       } else {
@@ -289,12 +331,8 @@ export default function Referee({
       <div className="modal hidden" ref={checkmateModalRef}>
         <div className="modal-body">
           <div className="checkmate-body">
-            <span>
-              Tie!
-            </span>
-            <button onClick={restartGame}>
-            Play again
-            </button>
+            <span>Tie!</span>
+            <button onClick={restartGame}>Play again</button>
           </div>
         </div>
       </div>
@@ -306,9 +344,7 @@ export default function Referee({
               The winning team is{" "}
               {boardState.turn === "white" ? "black" : "white"}!
             </span>
-            <button onClick={restartGame}>
-            Play again
-            </button>
+            <button onClick={restartGame}>Play again</button>
           </div>
         </div>
       </div>

@@ -52,7 +52,7 @@ def info(depth, move, score):
 
 env.reset()
 # Khởi tạo engine
-engine_path = "D:\App Install\stockfish-windows-x86-64-avx2\stockfish\stockfish-windows-x86-64-avx2.exe"
+engine_path = "D:\ADMIN\Documents\Code\ChessProject\chess-project\src\chess-backend\stockfish17.exe"
 mcts_win_count = 0
 mcts_lose_count =0
 

@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from models import  PieceModel, Position, MoveRequest,  SquareRequest
-from game_engine import make_move, get_game_state, initialize_board, is_valid_move, calculate_valid_moves, bot_move
+from game_engine import make_move, get_game_state, initialize_board, is_valid_move, calculate_valid_moves, bot_move, stock_fish_move
 import threading
+from fastapi.concurrency import run_in_threadpool
+
 board_lock = threading.Lock()
 
 app = FastAPI()
@@ -31,6 +33,12 @@ def play_move(move: MoveRequest):
 def play_bot_move():
     with board_lock:
         success, move = bot_move()
+    return {"success": success, "move": move, "state": get_game_state()}
+
+@app.post("/stockfish_move")
+async def stockfish_move():
+    with board_lock:
+        success, move = await run_in_threadpool(stock_fish_move)
     return {"success": success, "move": move, "state": get_game_state()}
 
 @app.post("/restart")
