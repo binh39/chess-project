@@ -160,21 +160,19 @@ class ChessPlayer:
         
         # Phân loại giai đoạn trận đấu
         if moves_played < 10:  # Khai cuộc
-            # Giảm 50% số lượng mô phỏng ở đầu game
             simulation_factor = 0.5
-        elif moves_played < 30:  # Đầu trung cuộc
-            # Tăng dần từ 50% đến 100%
-            simulation_factor = 0.5 + (moves_played - 10) * 0.025  # Tăng 2.5% mỗi nước đi
-        elif moves_played < 60:  # Trung cuộc
-            # Giữ nguyên 100%
-            simulation_factor = 1.0
-        else:  # Tàn cuộc
-            # Tăng lên đến 200% trong tàn cuộc
-            simulation_factor = 1.0 + min(1.0, (moves_played - 60) * 0.02)  # Tăng 2% mỗi nước, tối đa 200%
+        elif moves_played < 60:  # Đầu và giữa trung cuộc
+            # Tăng tuyến tính từ 0.5 đến 1.0
+            simulation_factor = 0.5 + (moves_played - 10) * (0.5 / 50)  # (1.0 - 0.5) / (60 - 10)
+        elif moves_played < 90:  # Cuối trung cuộc đến đầu tàn cuộc
+            # Tăng tuyến tính từ 1.0 đến 1.5
+            simulation_factor = 1.0 + (moves_played - 60) * (0.5 / 30)  # (1.5 - 1.0) / (90 - 60)
+        else:  # Tàn cuộc sâu
+            simulation_factor = 1.5
         
         # Kiểm tra thêm nếu là tàn cuộc (dựa vào số quân)
         if self.is_endgame(env):
-            simulation_factor = max(simulation_factor, 2.0)  # Đảm bảo ít nhất 150% nếu là tàn cuộc
+            simulation_factor = max(simulation_factor, 2.0)  # Đảm bảo ít nhất 200% nếu là tàn cuộc
         
         # Tính số lượng mô phỏng thực tế
         simulation_num = int(base_simulations * simulation_factor)
