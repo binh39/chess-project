@@ -24,7 +24,9 @@ export default function Referee({
   const [boardState, setBoardState] = useState(null);
   const [promotionData, setPromotionData] = useState(null);
   const modalRef = useRef(null);
-  const checkmateModalRef = useRef(null);
+  const checkmateModalRef = useRef(null); // chiếu hết cờ
+  const drawModalRef = useRef(null); // Hòa cờ
+
   const controllerRef = useRef(null);
 
   useEffect(() => {
@@ -108,6 +110,8 @@ export default function Referee({
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
+        } else if(data.state.is_draw) {
+          drawModalRef.current?.classList.remove("hidden");
         }
       }
     } catch (err) {
@@ -174,7 +178,9 @@ export default function Referee({
       if (data.state.is_checkmate) {
         checkmateModalRef.current?.classList.remove("hidden");
         checkmateSound.play();
-      }
+      } else if(data.state.is_draw) {
+          drawModalRef.current?.classList.remove("hidden");
+        }
     }
   }
 
@@ -214,6 +220,8 @@ export default function Referee({
         if (data.state.is_checkmate) {
           checkmateModalRef.current?.classList.remove("hidden");
           checkmateSound.play();
+        } else if(data.state.is_draw) {
+          drawModalRef.current?.classList.remove("hidden");
         }
       } else {
         console.error("Promotion failed:", data.message || data);
@@ -242,6 +250,7 @@ export default function Referee({
 
         // Ẩn modal checkmate nếu có
         checkmateModalRef.current?.classList.add("hidden");
+        drawModalRef.current?.classList.add("hidden");
       } else {
         console.error("Lỗi reset game: Không có dữ liệu bàn cờ");
       }
@@ -278,6 +287,19 @@ export default function Referee({
 
       {/* Modal endgame */}
       <div className="modal hidden" ref={checkmateModalRef}>
+        <div className="modal-body">
+          <div className="checkmate-body">
+            <span>
+              Tie!
+            </span>
+            <button onClick={restartGame}>
+            Play again
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="modal hidden" ref={drawModalRef}>
         <div className="modal-body">
           <div className="checkmate-body">
             <span>

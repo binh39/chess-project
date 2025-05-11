@@ -5,8 +5,6 @@ from game_engine import make_move, get_game_state, initialize_board, is_valid_mo
 import threading
 board_lock = threading.Lock()
 
-
-
 app = FastAPI()
 
 # Cho phép React frontend gọi API này

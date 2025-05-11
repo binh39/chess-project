@@ -49,21 +49,24 @@ def get_player(config):
 def info(depth, move, score):
     print(f"info score cp {int(score*100)} depth {depth} pv {move}")
     sys.stdout.flush()
+
 env.reset()
 # Khởi tạo engine
-engine_path = 'D:\App Install\stockfish-windows-x86-64-avx2\stockfish\stockfish-windows-x86-64-avx2.exe'
+engine_path = "D:\App Install\stockfish-windows-x86-64-avx2\stockfish\stockfish-windows-x86-64-avx2.exe"
 mcts_win_count = 0
+mcts_lose_count =0
 
 # MCTS chơi trắng, Stockfish chơi đen
 mcts_color = chess.WHITE
 board = env.board
 res = np.array([])
+engine = chess.engine.SimpleEngine.popen_uci(engine_path)
 
-for i in range (3):
+for i in range (10):
     env.reset()
     board = env.board
     x = 0
-    while not board.is_game_over():
+    while not board.is_game_over(claim_draw=True):
         
         if board.turn == mcts_color:
             # MCTS chọn nước đi
@@ -87,9 +90,9 @@ for i in range (3):
             with chess.engine.SimpleEngine.popen_uci(engine_path) as engine:
                 engine.configure({
                     "UCI_LimitStrength": True,  # Bật giới hạn sức mạnh
-                    "UCI_Elo": 2600             # Chỉnh mức ELO (mặc định Stockfish mạnh hơn 3200)
+                    "UCI_Elo": 2800             # Chỉnh mức ELO (mặc định Stockfish mạnh hơn 3200)
                 })
-                result = engine.play(board, chess.engine.Limit(time=5))
+                result = engine.play(board, chess.engine.Limit(time=10))
             move = result.move.uci()
             env.step(move)
             print("Stockfish chọn:", move)
@@ -99,10 +102,12 @@ for i in range (3):
 
     # Kết thúc
     print(board)
-    print("Kết quả:", board.result())
-    np.append(res, board.result())
-    result_str = board.result()
+    print("Kết quả:", board.result(claim_draw=True))
+    np.append(res, board.result(claim_draw=True))
+    result_str = board.result(claim_draw=True)
     if result_str == "1-0":
         mcts_win_count += 1
+    elif result_str == "0-1":
+        mcts_lose_count += 1
 
-print(mcts_win_count)
+print(mcts_win_count, mcts_lose_count)

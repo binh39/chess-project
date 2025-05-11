@@ -1,9 +1,10 @@
 import chess
+import chess.engine
+
 import random
 import math
 import time
 from models import GameState, Piece
-import chess.engine
 import numpy as np
 import tensorflow as tf
 import sys
@@ -86,7 +87,7 @@ class MCTSNode:
         self.visits += 1
         self.wins += result
 
-def mcts_search(board, max_time=5):
+def mcts_search(board, max_time=10):
     root = MCTSNode()
     root.untried_moves = list(board.legal_moves)
 
@@ -197,54 +198,39 @@ def choose_best_promotion(from_square, to_square):
 
     return best_promotion
 
-# def bot_move():
-#     global board
-#     try:
-#         if board.is_game_over():
-#             print("Game over, no move to make")
-#             return False, None
-#         move = mcts_search(board, max_time=MAX_TIME)
-#         piece = board.piece_at(move.from_square)
-#         if piece is None:
-#             print(" Invalid move: from_square has no piece.")
-#             return False, None
-#         is_promotion = (
-#             piece.piece_type == chess.PAWN and
-#             ((piece.color == chess.WHITE and move.to_square // 8 == 7) or
-#              (piece.color == chess.BLACK and move.to_square // 8 == 0))
-#         )
-#         if is_promotion:
-#             promotion = choose_best_promotion(chess.square_name(move.from_square), chess.square_name(move.to_square))
-#             if promotion not in ['q', 'r', 'b', 'n']:
-#                 print(f"Invalid promotion {promotion}, defaulting to Queen")
-#                 promotion = 'q'
-#             move = chess.Move(move.from_square, move.to_square, promotion=chess.Piece.from_symbol(promotion.upper()))
-#         board.push(move)
-#         return True, move.uci()
-#     except Exception as e:
-#         print(f"Error in bot_move: {e}")
-#         raise
-
-move_count = 0
 def bot_move():
     global board
     global me_player
     global engine_path
     global engine
-    
     if not me_player:
         me_player = get_player(default_config)
-    try:
-        action = me_player.action(env, False)
-        print(action)
-        env.step(action)
-    except (chess.IllegalMoveError, ValueError) as e:
-        print("Phát hiện hòa cờ hoặc nước đi không hợp lệ:", e)
-        env.board.clear_stack()  # nếu cần xóa stack để tránh lỗi tiếp
-        env._done = True
-        env._winner = 0 #Hòa
-        return False, action
 
+    if board.turn == mcts_color:
+        # MCTS chọn nước đi
+        if not me_player:
+            me_player = get_player(default_config)
+        try:
+            action = me_player.action(env, False)
+            print(action)
+            env.step(action)
+        except (chess.IllegalMoveError, ValueError) as e:
+            print("Phát hiện hòa cờ hoặc nước đi không hợp lệ:", e)
+            env.board.clear_stack()  # nếu cần xóa stack để tránh lỗi tiếp
+            env._done = True
+            env._winner = 0 #Hòa
+            
+        print("MCTS chọn:", action)
+    else:
+        # Stockfish chọn nước đi
+        engine.configure({
+                "UCI_LimitStrength": True,  # Bật giới hạn sức mạnh
+                "UCI_Elo": 2600             # Chỉnh mức ELO (mặc định Stockfish mạnh hơn 3200)
+            })
+        result = engine.play(board, chess.engine.Limit(time=5))
+        action = result.move.uci()
+        env.step(action)
+        print("Stockfish chọn:", action)
     return True, action
 
 
@@ -273,10 +259,6 @@ def get_game_state():
         turn="white" if board.turn == chess.WHITE else "black",
         is_check=board.is_check(),
         is_checkmate=board.is_checkmate(),
-        is_draw = board.is_stalemate() or
-                board.is_insufficient_material() or
-                board.is_fifty_moves() or
-                board.can_claim_threefold_repetition()
     )
 
 def promote_pawn(from_square, to_square, piece_type):
@@ -349,9 +331,6 @@ def is_valid_move(from_square: str, to_square: str) -> bool:
 
     return move in board.legal_moves
 
-from models import PieceModel, Position
-from typing import List
-
 def calculate_valid_moves(square: str):
     """
     Trả về danh sách các nước đi hợp lệ từ ô được chọn (square).
@@ -366,3 +345,35 @@ def calculate_valid_moves(square: str):
             valid_moves.append(chess.square_name(move.to_square))
 
     return valid_moves
+
+
+stockfish_path = "D:\Mon_Hoc\Ky_2_24-25\AI\chess-project\stockfish\stockfish17.exe"
+
+# Khởi tạo bàn cờ
+# board = chess.Board()
+
+# Khởi tạo engine
+engine = chess.engine.SimpleEngine.popen_uci(stockfish_path)
+engine.configure({
+    "UCI_LimitStrength": True,
+    "UCI_Elo": 2600
+})
+"""
+while not board.is_game_over():
+    print(board)
+    print()
+
+    # Stockfish chọn nước đi
+    result = engine.play(board, chess.engine.Limit(time=0.1))  # hoặc depth=15
+    move = result.move
+    print("Stockfish chọn:", move)
+
+    # Thực hiện nước đi
+    board.push(move)
+
+# Kết thúc
+print(board)
+print("Kết quả:", board.result())
+
+engine.quit()
+"""

@@ -12,8 +12,8 @@ class PlayWithHumanConfig:
 
     """
     def __init__(self):
-        self.simulation_num_per_move = 1200
-        self.threads_multiplier = 2
+        self.simulation_num_per_move = 3000
+        self.threads_multiplier = 3
         self.c_puct = 1 # lower  = prefer mean action value
         self.noise_eps = 0
         self.tau_decay_rate = 0  # start deterministic mode
@@ -46,8 +46,8 @@ class ResourceConfig:
         self.data_dir = os.environ.get("DATA_DIR", _data_dir())
 
         self.model_dir = os.environ.get("MODEL_DIR", os.path.join(self.data_dir, "model"))
-        self.model_best_config_path = os.path.join(self.model_dir, "model_config.json")
-        self.model_best_weight_path = os.path.join(self.model_dir, "model.weights.h5")
+        self.model_best_config_path = os.path.join(self.model_dir, "my_model_config.json")
+        self.model_best_weight_path = os.path.join(self.model_dir, "my_model.weights.h5")
 
         self.model_best_distributed_ftp_server = "alpha-chess-zero.mygamesonline.org"
         self.model_best_distributed_ftp_user = "2537576_chess"

@@ -32,3 +32,4 @@ class GameState(BaseModel):
     turn: str
     is_check: bool
     is_checkmate: bool
+    is_draw: bool

@@ -152,9 +152,39 @@ class ChessPlayer:
         :return (float,float): the maximum value of all values predicted by each thread,
             and the first value that was predicted.
         """
+        # Lấy số lượng nước đi đã thực hiện
+        moves_played = env.num_halfmoves
+        
+        # Tính toán số lượng mô phỏng dựa trên tiến trình trận đấu
+        base_simulations = self.play_config.simulation_num_per_move
+        
+        # Phân loại giai đoạn trận đấu
+        if moves_played < 10:  # Khai cuộc
+            # Giảm 50% số lượng mô phỏng ở đầu game
+            simulation_factor = 0.5
+        elif moves_played < 30:  # Đầu trung cuộc
+            # Tăng dần từ 50% đến 100%
+            simulation_factor = 0.5 + (moves_played - 10) * 0.025  # Tăng 2.5% mỗi nước đi
+        elif moves_played < 60:  # Trung cuộc
+            # Giữ nguyên 100%
+            simulation_factor = 1.0
+        else:  # Tàn cuộc
+            # Tăng lên đến 200% trong tàn cuộc
+            simulation_factor = 1.0 + min(1.0, (moves_played - 60) * 0.02)  # Tăng 2% mỗi nước, tối đa 200%
+        
+        # Kiểm tra thêm nếu là tàn cuộc (dựa vào số quân)
+        if self.is_endgame(env):
+            simulation_factor = max(simulation_factor, 2.0)  # Đảm bảo ít nhất 150% nếu là tàn cuộc
+        
+        # Tính số lượng mô phỏng thực tế
+        simulation_num = int(base_simulations * simulation_factor)
+        
+        # Log để theo dõi (tuỳ chọn)
+        # print(f"Nước {moves_played}: {simulation_num} mô phỏng (hệ số: {simulation_factor:.2f})")
+        
         futures = []
         with ThreadPoolExecutor(max_workers=self.play_config.search_threads) as executor:
-            for _ in range(self.play_config.simulation_num_per_move):
+            for _ in range(simulation_num):  # Sử dụng simulation_num đã điều chỉnh
                 futures.append(executor.submit(self.search_my_move,env=env.copy(),is_root_node=True))
 
         vals = [f.result() for f in futures]
@@ -191,7 +221,11 @@ class ChessPlayer:
             # SELECT STEP
             action_t = self.select_action_q_and_u(env, is_root_node)
 
-            virtual_loss = self.play_config.virtual_loss
+            if self.is_endgame(env):
+            # Giảm hoặc loại bỏ virtual loss trong tàn cuộc
+                virtual_loss = 0.1  # Hoặc giá trị nhỏ hơn như 1 thay vì 3
+            else:
+                virtual_loss = self.play_config.virtual_loss
 
             my_visit_stats = self.tree[state]
             my_stats = my_visit_stats.a[action_t]
@@ -283,6 +317,8 @@ class ChessPlayer:
         best_s = -999
         best_a = None
         if is_root_node:
+            if self.is_endgame(env):
+                e = self.play_config.noise_eps * 0.2  # Giảm nhiễu trong tàn cuộc
             noise = np.random.dirichlet([dir_alpha] * len(my_visitstats.a))
         
         i = 0
@@ -296,21 +332,30 @@ class ChessPlayer:
                 best_s = b
                 best_a = action
 
-        if best_a not in env.board.legal_moves:
-            print(f"INVALID MOVE SELECTED: {best_a} not in legal_moves: {[m.uci() for m in env.board.legal_moves]}")
         return best_a
 
     def apply_temperature(self, policy, turn):
         """
         Applies a random fluctuation to probability of choosing various actions
-        :param policy: list of probabilities of taking each action
-        :param turn: number of turns that have occurred in the game so far
-        :return: policy, randomly perturbed based on the temperature. High temp = more perturbation. Low temp
-            = less.
         """
-        tau = np.power(self.play_config.tau_decay_rate, turn + 1)
-        if tau < 0.1:
+        # Kiểm tra nếu đang ở tàn cuộc
+        is_endgame = False
+        for state, visit_stats in self.tree.items():
+            if len(self.tree) > 0:  # Có ít nhất một trạng thái trong cây
+                # Lấy trạng thái đầu tiên để kiểm tra
+                board = chess.Board(state)
+                if len(board.piece_map()) <= 10:  # Đơn giản hóa kiểm tra tàn cuộc
+                    is_endgame = True
+                    break
+        
+        # Trong tàn cuộc, đặt tau=0 để luôn chọn nước đi tốt nhất
+        if is_endgame:
             tau = 0
+        else:
+            tau = np.power(self.play_config.tau_decay_rate, turn + 1)
+            if tau < 0.1:
+                tau = 0
+        
         if tau == 0:
             action = np.argmax(policy)
             ret = np.zeros(self.labels_n)
@@ -328,32 +373,10 @@ class ChessPlayer:
         state = state_key(env)
         my_visitstats = self.tree[state]
         policy = np.zeros(self.labels_n)
-
-        # Chỉ xem xét các nước đi hợp lệ trong trạng thái hiện tại
-        legal_moves = list(env.board.legal_moves)
-
         for action, a_s in my_visitstats.a.items():
             policy[self.move_lookup[action]] = a_s.n
 
-        # Tránh chia cho 0 khi chuẩn hóa policy
-        sum_policy = np.sum(policy)
-        if sum_policy > 0:
-            policy /= sum_policy
-        else:
-            # Nếu không có nước đi hợp lệ nào được thăm, tạo phân phối đều trên tất cả các nước đi hợp lệ
-            for move in legal_moves:
-                try:
-                    policy[self.move_lookup[move]] = 1.0
-                except KeyError:
-                    continue
-            
-            sum_policy = np.sum(policy)
-            if sum_policy > 0:  # Kiểm tra lại sau khi thêm nước đi hợp lệ
-                policy /= sum_policy
-            else:
-                # Nếu vẫn không có nước đi hợp lệ nào, đây có thể là trạng thái kết thúc game
-                logger.warning(f"Không tìm thấy nước đi hợp lệ nào cho trạng thái: {state}")
-    
+        policy /= np.sum(policy)
         return policy
 
     def sl_action(self, observation, my_action, weight=1):
@@ -383,6 +406,37 @@ class ChessPlayer:
         """
         for move in self.moves:  # add this game winner result to all past moves.
             move += [z]
+
+    def is_endgame(self, env):
+        """Xác định xem vị thế hiện tại có phải là tàn cuộc không.
+        
+        Tàn cuộc thường được định nghĩa là:
+        1. Tổng số quân ít hơn một ngưỡng cụ thể
+        2. Không có hậu
+        3. Hoặc ít tốt
+        """
+        board = env.board
+        
+        # Đếm tổng số quân
+        total_pieces = len(board.piece_map())
+        
+        # Kiểm tra xem có hậu không
+        has_queens = board.pieces(chess.QUEEN, chess.WHITE) or board.pieces(chess.QUEEN, chess.BLACK)
+        
+        # Đếm số tốt
+        white_pawns = len(board.pieces(chess.PAWN, chess.WHITE))
+        black_pawns = len(board.pieces(chess.PAWN, chess.BLACK))
+        total_pawns = white_pawns + black_pawns
+        
+        # Điều kiện tàn cuộc
+        if total_pieces <= 10:  # Ít quân
+            return True
+        if not has_queens and total_pieces <= 14:  # Không có hậu và ít quân
+            return True
+        if total_pawns <= 4 and total_pieces <= 12:  # Ít tốt và ít quân
+            return True
+        
+        return False
 
 
 def state_key(env: ChessEnv) -> str:
