@@ -172,7 +172,8 @@ class ChessPlayer:
         
         # Kiểm tra thêm nếu là tàn cuộc (dựa vào số quân)
         if self.is_endgame(env):
-            simulation_factor = max(simulation_factor, 2.0)  # Đảm bảo ít nhất 200% nếu là tàn cuộc
+            simulation_factor = max(simulation_factor, 1.36)  # Đảm bảo ít nhất 200% nếu là tàn cuộc
+            self.play_config.c_puct = 0.36
         
         # Tính số lượng mô phỏng thực tế
         simulation_num = int(base_simulations * simulation_factor)

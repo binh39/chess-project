@@ -331,7 +331,10 @@ export default function Referee({
       <div className="modal hidden" ref={checkmateModalRef}>
         <div className="modal-body">
           <div className="checkmate-body">
-            <span>Tie!</span>
+            <span>
+              The winning team is{" "}
+              {boardState.turn === "white" ? "black" : "white"}!
+            </span>
             <button onClick={restartGame}>Play again</button>
           </div>
         </div>
@@ -341,8 +344,7 @@ export default function Referee({
         <div className="modal-body">
           <div className="checkmate-body">
             <span>
-              The winning team is{" "}
-              {boardState.turn === "white" ? "black" : "white"}!
+              Game end in a draw!
             </span>
             <button onClick={restartGame}>Play again</button>
           </div>
