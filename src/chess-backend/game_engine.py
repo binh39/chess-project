@@ -4,7 +4,6 @@ import math
 import time
 from models import GameState, Piece
 import chess.engine
-import numpy as np
 import tensorflow as tf
 import sys
 from chess_zero.agent.player_chess import ChessPlayer
@@ -21,7 +20,6 @@ default_config = Config("normal")
 PlayWithHumanConfig().update_play_config(default_config.play)
 me_player = None
 env = ChessEnv().reset()
-
 
 with tf.device('/GPU:0'):
     model = ChessModel(default_config)
@@ -197,34 +195,6 @@ def choose_best_promotion(from_square, to_square):
 
     return best_promotion
 
-# def bot_move():
-#     global board
-#     try:
-#         if board.is_game_over():
-#             print("Game over, no move to make")
-#             return False, None
-#         move = mcts_search(board, max_time=MAX_TIME)
-#         piece = board.piece_at(move.from_square)
-#         if piece is None:
-#             print(" Invalid move: from_square has no piece.")
-#             return False, None
-#         is_promotion = (
-#             piece.piece_type == chess.PAWN and
-#             ((piece.color == chess.WHITE and move.to_square // 8 == 7) or
-#              (piece.color == chess.BLACK and move.to_square // 8 == 0))
-#         )
-#         if is_promotion:
-#             promotion = choose_best_promotion(chess.square_name(move.from_square), chess.square_name(move.to_square))
-#             if promotion not in ['q', 'r', 'b', 'n']:
-#                 print(f"Invalid promotion {promotion}, defaulting to Queen")
-#                 promotion = 'q'
-#             move = chess.Move(move.from_square, move.to_square, promotion=chess.Piece.from_symbol(promotion.upper()))
-#         board.push(move)
-#         return True, move.uci()
-#     except Exception as e:
-#         print(f"Error in bot_move: {e}")
-#         raise
-
 move_count = 0
 def bot_move():
     global board
@@ -246,7 +216,6 @@ def bot_move():
         return False, action
 
     return True, action
-
 
 # --- Game ---
 def get_game_state():

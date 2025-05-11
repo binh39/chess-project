@@ -1,16 +1,8 @@
 import chess
 import chess.engine
-
-import chess
-import random
-import math
-import time
-from models import GameState, Piece
-
 import numpy as np
 import tensorflow as tf
 import sys
-
 from chess_zero.agent.player_chess import ChessPlayer
 from chess_zero.config import Config, PlayWithHumanConfig
 from chess_zero.env.chess_env import ChessEnv
@@ -43,8 +35,6 @@ board = env.board
 def get_player(config):
     
     return ChessPlayer(config, model.get_pipes(config.play.search_threads))
-
-
 
 def info(depth, move, score):
     print(f"info score cp {int(score*100)} depth {depth} pv {move}")
@@ -97,8 +87,6 @@ for i in range (10):
             env.step(move)
             print("Stockfish chọn:", move)
         print(board)
-
-        # Thực hiện nước đi
 
     # Kết thúc
     print(board)

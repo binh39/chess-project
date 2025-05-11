@@ -145,7 +145,7 @@ class Config:
     flipped_labels = flipped_uci_labels()
     unflipped_index = None
 
-    def __init__(self, config_type="mini"):
+    def __init__(self, config_type="normal"):
         """
 
         :param str config_type: one of "mini", "normal", or "distributed", representing the set of

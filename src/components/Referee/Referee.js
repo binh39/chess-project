@@ -56,11 +56,7 @@ export default function Referee({
       setCurrentTurn(boardState.turn);
       // Nếu là chế độ Bot VS Bot, bot tự động chơi cho cả hai bên
       if (isBotVsBot && !boardState.is_checkmate) {
-        if (boardState.turn === "black") {
-          playStockFishMove();
-        } else {
-          playBotMove();
-        }
+        playBotMove();
       }
       // Nếu là chế độ Player VS Bot và đến lượt bot (đen)
       else if (
@@ -89,44 +85,6 @@ export default function Referee({
 
     return () => clearInterval(interval);
   }, [currentTurn]);
-
-  async function playStockFishMove() {
-    // Khởi tạo controller mới mỗi lần gọi
-    const controller = new AbortController();
-    controllerRef.current = controller;
-
-    try {
-      const res = await fetch("http://localhost:8000/stockfish_move", {
-        method: "POST",
-        signal: controller.signal, // dùng tín hiệu để có thể hủy fetch
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        const convertedPieces = convertBackendPieces(data.state.pieces);
-        setBoardState({ ...data.state, pieces: convertedPieces });
-        moveSound.play();
-
-        const fromSquare = data.move.substring(0, 2);
-        const toSquare = data.move.substring(2, 4);
-        setLastMove({ from: fromSquare, to: toSquare });
-
-        if (data.state.is_checkmate) {
-          checkmateModalRef.current?.classList.remove("hidden");
-          checkmateSound.play();
-        } else if (data.state.is_draw) {
-          drawModalRef.current?.classList.remove("hidden");
-        }
-      }
-    } catch (err) {
-      if (err.name === "AbortError") {
-        console.log("Bot move bị huỷ do restart.");
-      } else {
-        console.error("Lỗi playBotMove:", err);
-      }
-    } finally {
-    }
-  }
 
   async function playBotMove() {
     // Khởi tạo controller mới mỗi lần gọi
@@ -172,7 +130,6 @@ export default function Referee({
 
     const from_square = String.fromCharCode(97 + from.x) + (from.y + 1);
     const to_square = String.fromCharCode(97 + to.x) + (to.y + 1);
-
     const promotionRank = playedPiece.team === TeamType.OUR ? 7 : 0;
 
     // Nếu là người chơi (trắng) và cần phong hậu, hiển thị modal
@@ -343,9 +300,7 @@ export default function Referee({
       <div className="modal hidden" ref={drawModalRef}>
         <div className="modal-body">
           <div className="checkmate-body">
-            <span>
-              Game end in a draw!
-            </span>
+            <span>Game end in a draw!</span>
             <button onClick={restartGame}>Play again</button>
           </div>
         </div>
